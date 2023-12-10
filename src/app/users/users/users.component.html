@@ -1,0 +1,73 @@
+<div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Project Listing</h4>
+          <h5 class="card-subtitle text-muted">Overview of the projects</h5>
+          <div class="table-responsive">
+            <table class="table align-middle text-nowrap">
+                <thead>
+                    <tr>
+                        <th class="text-dark font-medium fs-4">USER</th>
+                        <th class="text-dark font-medium fs-4">TAX YEAR</th>
+                        <th class="text-dark font-medium fs-4">DATE</th>
+                        <th class="text-dark font-medium fs-4">ACTIONS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let ts of users '>
+                        <td>
+                            <div class="d-flex align-items-center">
+                              <!-- <img [src]='#' alt="user" width="45" class="rounded-circle"> -->
+                                <div class="ms-3">
+                                    <h5 class="mb-0 font-medium">{{ts.name}}</h5>
+                                    <span class="text-muted">2023</span>
+                                    <h5 class="text-muted">{{now.toLocaleString()}}</h5>
+                                </div>
+                            </div>
+                        </td>
+                        
+                        <td>
+                         2018
+                        </td>
+                        <td>
+                          <h5 class="mb-0 fw-normal">{{now.toLocaleString()}}</h5>
+                      </td>
+                        <td>
+                          <button type="button" class="btn btn-success m-2">Manage</button>
+                          <button type="button" class="btn btn-danger m-2">Delete</button>
+                        </td>
+                    </tr>   
+                    
+                            <!-- ==================================-->
+            <!-- =======Advanced Pagination  ===== -->
+            <!-- ==================================-->
+            <div class="col-md-12">
+              <div class="card">
+                <div class="p-3">
+                  <h4 class="card-title mb-0">Advanced Pagination</h4>
+                </div>
+                <div class="card-body border-top">
+                  <p>Restricted size, no rotation:</p>
+                  <ngb-pagination
+                    [collectionSize]="120"
+                    [(page)]="page2"
+                    [maxSize]="4"
+                    [boundaryLinks]="true"
+                  ></ngb-pagination>
+  
+                  <hr />
+  
+                  <pre>Current page: {{ page2 }}</pre>
+                </div>
+              </div>
+            </div>
+                </tbody>
+            </table>
+        </div>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+  
