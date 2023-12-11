@@ -1,48 +1,48 @@
 <!-- formulario.component.html -->
 <section id="wrapper" class="">
   <div>
+
     <form class="form-horizontal form-material"
     id=""
-    (ngSubmit)="createFormEn">
+    autocomplete="off"
+    [formGroup]="formEnglish"
+    (ngSubmit)="createFormEn()">
 
-    
 <div class="container" >
 
   <div class="row">
     <div class="col-md-12">
       <div class="center">
          <!-- Logo -->
-           <img src="./../../../assets/images/logos/logoPNG.png" alt="Logo" width="250" height="250"
-            class="img-fluid">
+         <a href="javascript:void(0)">
+          <img src="./../../../assets/images/logos/logoPNG.png" alt="Logo" width="250" height="250"
+          class="img-fluid">
+        </a> 
       </div>
-
+    </div>
+    <div class="progress mb-3">
+      <div class="progress-bar" role="progressbar" [style.width.%]="((currentSection - 1) / 2) * 100"></div>
     </div>
   </div>
 
   <div class="row justify-content-center">
 
     <div class="col-md-6">
-      <!-- Slider -->
-      <div class="mb-3">
-        <label for="slider" class="form-label">Selecciona la sección:</label>
-        <input type="range" class="form-range" id="slider" name="slider" min="1" max="3" step="1" [(ngModel)]="seccionActual">
-        <output class="mt-3">Sección actual: {{ seccionActual }}</output>
-      </div>
 
       <!-- Sección 1 -->
-      <div *ngIf="seccionActual === 1">
+      <div *ngIf="currentSection === 1">
         <h2>Sección 1</h2>
         <div class="row">
           <div class="col-md-6">
             <div class="mb-3">
-              <label for="nombre">Name:</label>
-              <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="name">
+              <label>Name:</label>
+              <input type="text" class="form-control" formControlName="name">
             </div>
           </div>
           <div class="col-md-6">
             <div class="mb-3">
-              <label for="apellido">Spouse Name:</label>
-              <input type="text" class="form-control" id="apellido" name="apellido" [(ngModel)]="spouse_name">
+              <label>Spouse Name:</label>
+              <input type="text" class="form-control" formControlName="spouse_name">
             </div>
           </div>
         </div>
@@ -50,14 +50,14 @@
         <div class="row">
           <div class="col-md-6">
             <div class="mb-3">
-              <label for="phone">Phone:</label>
-              <input type="tel" class="form-control" id="telefono" name="phone" [(ngModel)]="phone">
+              <label>Phone:</label>
+              <input type="tel" class="form-control" formControlName="phone">
             </div>
           </div>
           <div class="col-md-6">
             <div class="mb-3">
-              <label for="phone2">Phone 2:</label>
-              <input type="tel" class="form-control" id="phone2" name="phone2" [(ngModel)]="phone2">
+              <label>Phone 2:</label>
+              <input type="tel" class="form-control" formControlName="phone2">
             </div>
           </div>
         </div>
@@ -65,14 +65,14 @@
         <div class="row">
           <div class="col-md-6">
             <div class="mb-3">
-              <label for="mail">Mail</label>
-              <input type="email" class="form-control" id="mail" name="mail" [(ngModel)]="mail">
+              <label>Mail</label>
+              <input type="email" class="form-control" formControlName="mail">
             </div>
           </div>
           <div class="col-md-6">
             <div class="mb-3">
-              <label for="mail2">Mail 2</label>
-              <input type="email" class="form-control" id="mail2" name="mail2" [(ngModel)]="mail2">
+              <label>Mail 2</label>
+              <input type="email" class="form-control" formControlName="mail2">
             </div>
           </div>
         </div>
@@ -80,8 +80,8 @@
         <div class="row">
           <div class="col-md-12">
             <div class="mb-3">
-              <label for="address">Current Address:</label>
-              <input type="text" class="form-control" id="address" name="address" [(ngModel)]="address">
+              <label>Current Address:</label>
+              <input type="text" class="form-control" formControlName="address">
             </div>
 
           </div>
@@ -98,16 +98,16 @@
               <!-- Checkboxes con label en una fila -->
             <div class="mb-3 d-flex align-items-center">
               <div class="form-check me-3">
-                <input type="checkbox" class="form-check-input" id="opcion1" name="single" [(ngModel)]="single">
-                <label class="form-check-label" for="single">Single</label>
+                <input type="radio" class="form-check-input" formControlName="single">
+                <label class="form-check-label">Single</label>
               </div>
               <div class="form-check me-3">
-                <input type="checkbox" class="form-check-input" id="married_filing_joint" name="married_filing_joint" [(ngModel)]="married_filing_joint">
-                <label class="form-check-label" for="married_filing_joint">Marriend Filing Joint</label>
+                <input type="radio" class="form-check-input" formControlName="married_filing_joint">
+                <label class="form-check-label">Marriend Filing Joint</label>
               </div>
               <div class="form-check me-3">
-                <input type="checkbox" class="form-check-input" id="head_of_household" name="head_of_household" [(ngModel)]="head_of_household">
-                <label class="form-check-label" for="head_of_household">Head of Household</label>
+                <input type="radio" class="form-check-input" formControlName="head_of_household">
+                <label class="form-check-label">Head of Household</label>
               </div>
             </div>
 
@@ -116,24 +116,24 @@
         <div class="row">
           <div class="col-md-12">
             <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="married_filing_separate" name="married_filing_separate" [(ngModel)]="married_filing_separate">
-              <label class="form-check-label" for="married_filing_separate">Married filing Separate</label>
+              <input type="radio" class="form-check-input" formControlName="married_filing_separate">
+              <label class="form-check-label" >Married filing Separate</label>
             </div>
           </div>
         </div>
 
         <div class="row">
           <div class="col-md-12">
-              <!-- Checkboxes con label en una fila -->
+              <!-- radioes con label en una fila -->
             <div class="mb-3 d-flex align-items-center">
               <label class="me-3">Are you being claimed as a dependent on someone else's return?</label>
               <div class="form-check me-3">
-                <input type="checkbox" class="form-check-input" id="option1" name="option1" [(ngModel)]="option1">
-                <label class="form-check-label" for="option1">Yes</label>
+                <input type="radio" class="form-check-input" formControlName="option1">
+                <label class="form-check-label">Yes</label>
               </div>
               <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="option2" name="option2" [(ngModel)]="option2">
-                <label class="form-check-label" for="option2">No</label>
+                <input type="radio" class="form-check-input" formControlName="option2">
+                <label class="form-check-label">No</label>
               </div>
             </div>
           </div>
@@ -144,20 +144,20 @@
             <div class="mb-3 d-flex align-items-center">
               <label class="me-3">Are you claiming any dependents? </label>
               <div class="form-check me-3">
-                <input type="checkbox" class="form-check-input" id="option3" name="option3" [(ngModel)]="option3">
-                <label class="form-check-label" for="option3">Yes</label>
+                <input type="radio" class="form-check-input" formControlName="option3">
+                <label class="form-check-label">Yes</label>
               </div>
               <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="option4" name="option4" [(ngModel)]="option4">
-                <label class="form-check-label" for="option4">No</label>
+                <input type="radio" class="form-check-input" formControlName="option4">
+                <label class="form-check-label" >No</label>
               </div>
           </div>
         </div>
 
         <div class="col-md-4">
           <div class="mb-3 d-flex align-items-center" >
-            <label for="option5">If yes, How many?:</label>
-            <input type="text" class="form-control" id="option5" name="option5" [(ngModel)]="option5">
+            <label>If yes, How many?:</label>
+            <input type="text" class="form-control" formControlName="option5">
           </div>
         </div>
         </div>
@@ -165,8 +165,8 @@
         <div class="row">
           <div class="col-md-12">
             <div class="mb-3">
-              <label for="apellido">Please detail full name, SSN, DOB, and relationship for any new dependents:</label>
-              <input type="text" class="form-control" id="description" name="description" [(ngModel)]="description">
+              <label>Please detail full name, SSN, DOB, and relationship for any new dependents:</label>
+              <input type="text" class="form-control" formControlName="description">
             </div>
 
           </div>
@@ -175,7 +175,7 @@
       </div>
 
       <!-- Sección 2 -->
-      <div *ngIf="seccionActual === 2">
+      <div *ngIf="currentSection === 2">
         <h2>Sección 2</h2>
 
         
@@ -186,12 +186,12 @@
               <label class="me-3">Did any member of your tax family have insurance through Marketplace/Obamacare (e.g., Oscar,
                 Florida Blue, Bright Health, Ambetter, Cigna, etc.)?</label>
               <div class="form-check me-3">
-                <input type="checkbox" class="form-check-input" id="option6" name="option6" [(ngModel)]="option6">
-                <label class="form-check-label" for="option6">Yes</label>
+                <input type="radio" class="form-check-input" formControlName="option6">
+                <label class="form-check-label">Yes</label>
               </div>
               <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="option7" name="option7" [(ngModel)]="option7">
-                <label class="form-check-label" for="option7">No</label>
+                <input type="radio" class="form-check-input" formControlName="option7">
+                <label class="form-check-label">No</label>
               </div>
             </div>
           </div>
@@ -202,20 +202,20 @@
             <div class="mb-3 d-flex align-items-center">
               <label class="me-3">If applicable, have you received all W-2's from all employers? </label>
               <div class="form-check me-3">
-                <input type="checkbox" class="form-check-input" id="option8" name="option8" [(ngModel)]="option8">
-                <label class="form-check-label" for="option8">Yes</label>
+                <input type="radio" class="form-check-input" formControlName="option8">
+                <label class="form-check-label">Yes</label>
               </div>
               <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="option9" name="option9" [(ngModel)]="option9">
-                <label class="form-check-label" for="option9">No</label>
+                <input type="radio" class="form-check-input" formControlName="option9">
+                <label class="form-check-label">No</label>
               </div>
           </div>
         </div>
 
         <div class="col-md-4">
           <div class="mb-3 d-flex align-items-center" >
-            <label for="option10">If yes, How many?:</label>
-            <input type="text" class="form-control" id="option10" name="option10" [(ngModel)]="option10">
+            <label>If yes, How many?:</label>
+            <input type="text" class="form-control" formControlName="option10">
           </div>
         </div>
         </div>
@@ -226,12 +226,12 @@
               <label class="me-3">Did you or your spouse receive social security benefits or retirement/pensions distributions during
                 the year (e.g., 401k, IRA, SSI, etc.)?  </label>
               <div class="form-check me-3">
-                <input type="checkbox" class="form-check-input" id="option11" name="option11" [(ngModel)]="option11">
-                <label class="form-check-label" for="option11">Yes</label>
+                <input type="radio" class="form-check-input" formControlName="option11">
+                <label class="form-check-label">Yes</label>
               </div>
               <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="option12" name="option12" [(ngModel)]="option12">
-                <label class="form-check-label" for="option12">No</label>
+                <input type="radio" class="form-check-input" formControlName="option12">
+                <label class="form-check-label">No</label>
               </div>
           </div>
           </div>
@@ -243,12 +243,12 @@
               <label class="me-3">Were you or your spouse self-employed or business owner during the past year (including any
                 1099, Uber, Lyft, DoorDash, etc.)</label>
               <div class="form-check me-3">
-                <input type="checkbox" class="form-check-input" id="option13" name="option13" [(ngModel)]="option13">
-                <label class="form-check-label" for="option13">Yes</label>
+                <input type="radio" class="form-check-input" formControlName="option13">
+                <label class="form-check-label">Yes</label>
               </div>
               <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="option14" name="option14" [(ngModel)]="option14">
-                <label class="form-check-label" for="option14">No</label>
+                <input type="radio" class="form-check-input" formControlName="option14">
+                <label class="form-check-label">No</label>
               </div>
           </div>
           </div>
@@ -259,12 +259,12 @@
             <div class="mb-3 d-flex align-items-center">
               <label class="me-3">Did you or your spouse have stocks/cryptocurrency transactions during the past year?</label>
               <div class="form-check me-3">
-                <input type="checkbox" class="form-check-input" id="option15" name="option15" [(ngModel)]="option15">
-                <label class="form-check-label" for="option15">Yes</label>
+                <input type="radio" class="form-check-input" formControlName="option15">
+                <label class="form-check-label">Yes</label>
               </div>
               <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="option16" name="option16" [(ngModel)]="option16">
-                <label class="form-check-label" for="option16">No</label>
+                <input type="radio" class="form-check-input" formControlName="option16">
+                <label class="form-check-label">No</label>
               </div>
           </div>
           </div>
@@ -275,12 +275,12 @@
             <div class="mb-3 d-flex align-items-center">
               <label class="me-3">Did you or your spouse have rental income from a property during the past year? </label>
               <div class="form-check me-3">
-                <input type="checkbox" class="form-check-input" id="option17" name="option17" [(ngModel)]="option17">
-                <label class="form-check-label" for="option17">Yes</label>
+                <input type="radio" class="form-check-input" formControlName="option17">
+                <label class="form-check-label">Yes</label>
               </div>
               <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="option18" name="option18" [(ngModel)]="option18">
-                <label class="form-check-label" for="option18">No</label>
+                <input type="radio" class="form-check-input" formControlName="option18">
+                <label class="form-check-label">No</label>
               </div>
           </div>
           </div>
@@ -291,12 +291,12 @@
             <div class="mb-3 d-flex align-items-center">
               <label class="me-3">Did you or your spouse pay any tuition costs or student loan interest?  </label>
               <div class="form-check me-3">
-                <input type="checkbox" class="form-check-input" id="option19" name="option19" [(ngModel)]="option19">
-                <label class="form-check-label" for="option19">Yes</label>
+                <input type="radio" class="form-check-input" formControlName="option19">
+                <label class="form-check-label">Yes</label>
               </div>
               <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="option20" name="option20" [(ngModel)]="option20">
-                <label class="form-check-label" for="option20">No</label>
+                <input type="radio" class="form-check-input" formControlName="option20">
+                <label class="form-check-label">No</label>
               </div>
           </div>
           </div>
@@ -307,12 +307,12 @@
             <div class="mb-3 d-flex align-items-center">
               <label class="me-3">Did you purchase or sell your principal home during the past year?   </label>
               <div class="form-check me-3">
-                <input type="checkbox" class="form-check-input" id="option21" name="option21" [(ngModel)]="option21">
-                <label class="form-check-label" for="option21">Yes</label>
+                <input type="radio" class="form-check-input"formControlName="option21">
+                <label class="form-check-label">Yes</label>
               </div>
               <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="option22" name="option22" [(ngModel)]="option22">
-                <label class="form-check-label" for="option22">No</label>
+                <input type="radio" class="form-check-input" formControlName="option22">
+                <label class="form-check-label">No</label>
               </div>
           </div>
           </div>
@@ -323,12 +323,12 @@
             <div class="mb-3 d-flex align-items-center">
               <label class="me-3">Did you or your spouse live or work in a different state from FL over the past year?  </label>
               <div class="form-check me-3">
-                <input type="checkbox" class="form-check-input" id="option23" name="option23" [(ngModel)]="option23">
-                <label class="form-check-label" for="option23">Yes</label>
+                <input type="radio" class="form-check-input" formControlName="option23">
+                <label class="form-check-label">Yes</label>
               </div>
               <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="option24" name="option24" [(ngModel)]="option24">
-                <label class="form-check-label" for="option24">No</label>
+                <input type="radio" class="form-check-input" formControlName="option24">
+                <label class="form-check-label">No</label>
               </div>
           </div>
           </div>
@@ -339,7 +339,7 @@
       </div>
 
       <!-- Sección 3 -->
-      <div *ngIf="seccionActual === 3">
+      <div *ngIf="currentSection === 3">
         <h2>Sección 3</h2>
         <div class="row">
           <div class="col-md-12">
@@ -351,12 +351,12 @@
                     <!-- Checkboxes con label en una fila -->
                   <div class="mb-3 d-flex align-items-center">
                     <div class="form-check me-3">
-                      <input type="checkbox" class="form-check-input" id="option25" name="option25" [(ngModel)]="option25">
-                      <label class="form-check-label" for="option25">Identity Protection PIN</label>
+                      <input type="checkbox" class="form-check-input" formControlName="option25">
+                      <label class="form-check-label">Identity Protection PIN</label>
                     </div>
                     <div class="form-check">
-                      <input type="checkbox" class="form-check-input" id="option27" name="option27" [(ngModel)]="option27">
-                      <label class="form-check-label" for="option27">Solar panels</label>
+                      <input type="checkbox" class="form-check-input" formControlName="option27">
+                      <label class="form-check-label">Solar panels</label>
                     </div>
                   </div>
 
@@ -365,12 +365,12 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="option26" name="option26" [(ngModel)]="option26">
-                    <label class="form-check-label" for="option26">Unemployment</label>
+                    <input type="checkbox" class="form-check-input" formControlName="option26">
+                    <label class="form-check-label">Unemployment</label>
                   </div>
                   <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="option28" name="option28" [(ngModel)]="option28">
-                    <label class="form-check-label" for="option28">Daycare/dependent care</label>
+                    <input type="checkbox" class="form-check-input" formControlName="option28">
+                    <label class="form-check-label" >Daycare/dependent care</label>
                   </div>
                 </div>
               </div>
@@ -385,32 +385,50 @@
                   <div class="col-md-3">
                     <br>
                     <div class="form-check">
-                      <input type="checkbox" class="form-check-input" id="option29" name="option29" [(ngModel)]="option29">
-                      <label class="form-check-label" for="option29">Checking</label>
+                      <input type="radio" class="form-check-input" formControlName="option29">
+                      <label class="form-check-label">Checking</label>
                     </div>
                   </div>
                   <div class="col-md-3">
                     <br>
                     <div class="form-check">
-                      <input type="checkbox" class="form-check-input" id="option30" name="option30" [(ngModel)]="option30">
-                      <label class="form-check-label" for="option30">Savings</label>
+                      <input type="checkbox" class="form-check-input" formControlName="option30">
+                      <label class="form-check-label">Savings</label>
                     </div>
                   </div>          
                   <div class="col-md-3">
                     <div class="mb-3">
-                      <label for="bankRouting">Bank Routing:</label>
-                      <input type="text" class="form-control" id="bankRouting" name="bankRouting" [(ngModel)]="bankRouting">
+                      <label>Bank Routing:</label>
+                      <input type="text" class="form-control" formControlName="bankRouting">
                     </div>
                   </div>
                   <div class="col-md-3">
                     <div class="mb-3">
-                      <label for="bankAccount">Bank Account:</label>
-                      <input type="text" class="form-control" id="bankAccount" name="bankAccount" [(ngModel)]="bankAccount">
+                      <label>Bank Account:</label>
+                      <input type="text" class="form-control" formControlName="bankAccount">
                     </div>
                   </div>
               </div>
 
-              <div class="text-center">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="checkbox checkbox-primary p-t-0">
+                    <input type="checkbox" formControlName="terms">
+                    <label>I agree to all <a href="#">Terms</a></label>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col text-danger">
+                  <p *ngIf="campoNoValido('name')">Name is mandatory</p>
+                  <p *ngIf="aceptaTerminos()">Terms should be accepted</p>
+
+                </div>
+              </div>
+
+              <div class="text-center mt-2">
                  <!-- Botón de enviar formulario -->
                 <button class="btn btn-success text-align-center" (click)="enviarFormulario()">Enviar Formulario</button>
               </div>
@@ -418,8 +436,8 @@
 
         <!-- Botones de navegación -->
         <div class="mb-2 d-flex justify-content-between">
-          <button class="btn btn-secondary" (click)="anteriorSeccion()">Anterior</button>
-          <button class="btn btn-primary" (click)="siguienteSeccion()">Siguiente</button>
+          <button class="btn btn-secondary" (click)="prevSection()">Anterior</button>
+          <button class="btn btn-primary" (click)="nextSection()">Siguiente</button>
         </div>
 
 
@@ -427,11 +445,7 @@
   </div>
 </div>
   
-  
   </form>
-
-
   </div>
-
 </section>
 

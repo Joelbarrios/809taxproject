@@ -20,7 +20,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     RouterModule.forChild(HomePageComponentRoutes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
+
     
   ],
   

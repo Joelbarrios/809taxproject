@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup,FormBuilder, Validators } from '@angular/forms';
+import { FormGroup,FormBuilder, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-form2023en',
@@ -8,11 +8,16 @@ import { FormGroup,FormBuilder, Validators } from '@angular/forms';
 })
 export class Form2023enComponent {
 
+  public formSummited=false;
+
   public formEnglish= this.fb.group({
-    name:['',[Validators.required],Validators.minLength(3)],
-    spouse_name:['',[Validators.required],Validators.minLength(4)],
+    name:[null,[Validators.required,Validators.minLength(3)]],
+    spouse_name:['',[Validators.required,Validators.minLength(4)]],
     phone:['',[Validators.required]],
-    mail:['',[Validators.required], Validators.email],
+    phone2:['',[Validators.required]],
+    mail:['',[Validators.required, Validators.email]],
+    mail2:['',[Validators.required, Validators.email]],
+    description:['',[Validators.required]],
     address:['',[Validators.required]],
     single:['',[Validators.required]],
     married_filing_joint:['',[Validators.required]],
@@ -24,14 +29,47 @@ export class Form2023enComponent {
     option3:['',[Validators.required]],
     option4:['',[Validators.required]],
     option5:['',[Validators.required]],
-
+    option6:['',[Validators.required]],
+    option7:['',[Validators.required]],
+    option8:['',[Validators.required]],
+    option9:['',[Validators.required]],
+    option10:['',[Validators.required]],
+    option11:['',[Validators.required]],
+    option12:['',[Validators.required]],
+    option13:['',[Validators.required]],
+    option14:['',[Validators.required]],
+    option15:['',[Validators.required]],
+    option16:['',[Validators.required]],
+    option17:['',[Validators.required]],
+    option18:['',[Validators.required]],
+    option19:['',[Validators.required]],
+    option20:['',[Validators.required]],
+    option21:['',[Validators.required]],
+    option22:['',[Validators.required]],
+    option23:['',[Validators.required]],
+    option24:['',[Validators.required]],
+    option25:[''],
+    option26:[''],
+    option27:[''],
+    option28:[''],
+    option29:['',[Validators.required]],
+    option30:['',[Validators.required]],
+    bankRouting:['',[Validators.required]],
+    bankAccount:['',[Validators.required]],
+    seccionActual:[''],
+    terms:['',[Validators.required]]
+    
   });
+
+
 
   constructor(private fb:FormBuilder){
 
   }
 
- public seccionActual: number = 1;
+  currentSection: number  = 1;
+  formData: any = {};
+
  name: string = '';
  spouse_name: string = '';
  phone: string = '';
@@ -77,26 +115,48 @@ export class Form2023enComponent {
  bankRouting:string='';
  bankAccount:string='';
  description:string='';
+ terms:boolean=false;
 
 
  //CreateFormEnglish
  createFormEn(){
-  console.log(this.formEnglish.value)
+  this.formSummited=true;
+  console.log(this.formEnglish.value);
+
+if(this.formEnglish.valid){
+  console.log('posting form');
+}else{
+  console.log('error')
+}
+
  }
 
- 
+ nextSection() {
+  if (this.currentSection < 3) {
+    this.currentSection++;
+  }
+}
 
- anteriorSeccion() {
-   if (this.seccionActual > 1) {
-     this.seccionActual--;
-   }
- }
+prevSection() {
+  if (this.currentSection > 1) {
+    this.currentSection--;
+  }
+}
 
- siguienteSeccion() {
-   if (this.seccionActual < 3) {
-     this.seccionActual++;
-   }
- }
+campoNoValido(campo:string):boolean{
+
+  if(this.formEnglish.get(campo)?.invalid && this.formSummited ){
+    return true
+  }else{
+    return false;
+  }
+  
+}
+
+aceptaTerminos(){
+  return !this.formEnglish.get('terms')?.value && this.formSummited;
+}
+
 
  enviarFormulario() {
    // Aquí puedes implementar la lógica para enviar el formulario
@@ -148,5 +208,6 @@ export class Form2023enComponent {
 
    });
  }
+
 
 }
