@@ -31,7 +31,7 @@
 
       <!-- Sección 1 -->
       <div *ngIf="currentSection === 1">
-        <h2>Sección 1</h2>
+        <h2>Section 1</h2>
         <div class="row">
           <div class="col-md-6">
             <div class="mb-3">
@@ -98,15 +98,17 @@
               <!-- Checkboxes con label en una fila -->
             <div class="mb-3 d-flex align-items-center">
               <div class="form-check me-3">
-                <input type="radio" class="form-check-input" formControlName="single">
+                <input type="radio" class="form-check-input" formControlName="filing_status" value="single">
                 <label class="form-check-label">Single</label>
               </div>
               <div class="form-check me-3">
-                <input type="radio" class="form-check-input" formControlName="married_filing_joint">
+                <input type="radio" class="form-check-input" formControlName="filing_status"
+                value="married_filing_joint">
                 <label class="form-check-label">Marriend Filing Joint</label>
               </div>
               <div class="form-check me-3">
-                <input type="radio" class="form-check-input" formControlName="head_of_household">
+                <input type="radio" class="form-check-input" formControlName="filing_status"
+                value="head_of_househol">
                 <label class="form-check-label">Head of Household</label>
               </div>
             </div>
@@ -116,7 +118,8 @@
         <div class="row">
           <div class="col-md-12">
             <div class="form-check">
-              <input type="radio" class="form-check-input" formControlName="married_filing_separate">
+              <input type="radio" class="form-check-input" formControlName="filing_status"
+              value="married_filing_separate">
               <label class="form-check-label" >Married filing Separate</label>
             </div>
           </div>
@@ -128,11 +131,13 @@
             <div class="mb-3 d-flex align-items-center">
               <label class="me-3">Are you being claimed as a dependent on someone else's return?</label>
               <div class="form-check me-3">
-                <input type="radio" class="form-check-input" formControlName="option1">
+                <input type="radio" class="form-check-input" formControlName="question2"
+                value="Yes">
                 <label class="form-check-label">Yes</label>
               </div>
               <div class="form-check">
-                <input type="radio" class="form-check-input" formControlName="option2">
+                <input type="radio" class="form-check-input" formControlName="question2"
+                value="No">
                 <label class="form-check-label">No</label>
               </div>
             </div>
@@ -144,11 +149,13 @@
             <div class="mb-3 d-flex align-items-center">
               <label class="me-3">Are you claiming any dependents? </label>
               <div class="form-check me-3">
-                <input type="radio" class="form-check-input" formControlName="option3">
+                <input type="radio" class="form-check-input" formControlName="question3"
+                value="Yes">
                 <label class="form-check-label">Yes</label>
               </div>
               <div class="form-check">
-                <input type="radio" class="form-check-input" formControlName="option4">
+                <input type="radio" class="form-check-input" formControlName="question3"
+                value="No">
                 <label class="form-check-label" >No</label>
               </div>
           </div>
@@ -157,7 +164,7 @@
         <div class="col-md-4">
           <div class="mb-3 d-flex align-items-center" >
             <label>If yes, How many?:</label>
-            <input type="text" class="form-control" formControlName="option5">
+            <input type="text" class="form-control" formControlName="extraData_question3">
           </div>
         </div>
         </div>
@@ -166,7 +173,8 @@
           <div class="col-md-12">
             <div class="mb-3">
               <label>Please detail full name, SSN, DOB, and relationship for any new dependents:</label>
-              <input type="text" class="form-control" formControlName="description">
+              <input type="text" class="form-control" formControlName="description"
+              >
             </div>
 
           </div>
@@ -176,21 +184,21 @@
 
       <!-- Sección 2 -->
       <div *ngIf="currentSection === 2">
-        <h2>Sección 2</h2>
-
-        
-        
+        <h2>Section 2</h2>
+     
         <div class="row">
           <div class="col-md-12">
             <div class="mb-3 d-flex align-items-center">
               <label class="me-3">Did any member of your tax family have insurance through Marketplace/Obamacare (e.g., Oscar,
                 Florida Blue, Bright Health, Ambetter, Cigna, etc.)?</label>
               <div class="form-check me-3">
-                <input type="radio" class="form-check-input" formControlName="option6">
+                <input type="radio" class="form-check-input" formControlName="question4"
+                value="Yes">
                 <label class="form-check-label">Yes</label>
               </div>
               <div class="form-check">
-                <input type="radio" class="form-check-input" formControlName="option7">
+                <input type="radio" class="form-check-input" formControlName="question4"
+                value="No">
                 <label class="form-check-label">No</label>
               </div>
             </div>
@@ -202,11 +210,13 @@
             <div class="mb-3 d-flex align-items-center">
               <label class="me-3">If applicable, have you received all W-2's from all employers? </label>
               <div class="form-check me-3">
-                <input type="radio" class="form-check-input" formControlName="option8">
+                <input type="radio" class="form-check-input" formControlName="question5"
+                value="Yes">
                 <label class="form-check-label">Yes</label>
               </div>
               <div class="form-check">
-                <input type="radio" class="form-check-input" formControlName="option9">
+                <input type="radio" class="form-check-input" formControlName="question5"
+                value="No">
                 <label class="form-check-label">No</label>
               </div>
           </div>
@@ -215,7 +225,7 @@
         <div class="col-md-4">
           <div class="mb-3 d-flex align-items-center" >
             <label>If yes, How many?:</label>
-            <input type="text" class="form-control" formControlName="option10">
+            <input type="text" class="form-control" formControlName="extraData_question5">
           </div>
         </div>
         </div>
@@ -226,11 +236,13 @@
               <label class="me-3">Did you or your spouse receive social security benefits or retirement/pensions distributions during
                 the year (e.g., 401k, IRA, SSI, etc.)?  </label>
               <div class="form-check me-3">
-                <input type="radio" class="form-check-input" formControlName="option11">
+                <input type="radio" class="form-check-input" formControlName="question6"
+                value="Yes">
                 <label class="form-check-label">Yes</label>
               </div>
               <div class="form-check">
-                <input type="radio" class="form-check-input" formControlName="option12">
+                <input type="radio" class="form-check-input" formControlName="question6"
+                value="No">
                 <label class="form-check-label">No</label>
               </div>
           </div>
@@ -243,11 +255,13 @@
               <label class="me-3">Were you or your spouse self-employed or business owner during the past year (including any
                 1099, Uber, Lyft, DoorDash, etc.)</label>
               <div class="form-check me-3">
-                <input type="radio" class="form-check-input" formControlName="option13">
+                <input type="radio" class="form-check-input" formControlName="question7"
+                value="Yes">
                 <label class="form-check-label">Yes</label>
               </div>
               <div class="form-check">
-                <input type="radio" class="form-check-input" formControlName="option14">
+                <input type="radio" class="form-check-input" formControlName="question7"
+                value="No">
                 <label class="form-check-label">No</label>
               </div>
           </div>
@@ -259,11 +273,13 @@
             <div class="mb-3 d-flex align-items-center">
               <label class="me-3">Did you or your spouse have stocks/cryptocurrency transactions during the past year?</label>
               <div class="form-check me-3">
-                <input type="radio" class="form-check-input" formControlName="option15">
+                <input type="radio" class="form-check-input" formControlName="question8"
+                value="Yes">
                 <label class="form-check-label">Yes</label>
               </div>
               <div class="form-check">
-                <input type="radio" class="form-check-input" formControlName="option16">
+                <input type="radio" class="form-check-input" formControlName="question8"
+                value="No">
                 <label class="form-check-label">No</label>
               </div>
           </div>
@@ -275,11 +291,13 @@
             <div class="mb-3 d-flex align-items-center">
               <label class="me-3">Did you or your spouse have rental income from a property during the past year? </label>
               <div class="form-check me-3">
-                <input type="radio" class="form-check-input" formControlName="option17">
+                <input type="radio" class="form-check-input" formControlName="question9"
+                value="Yes">
                 <label class="form-check-label">Yes</label>
               </div>
               <div class="form-check">
-                <input type="radio" class="form-check-input" formControlName="option18">
+                <input type="radio" class="form-check-input" formControlName="question9"
+                value="No">
                 <label class="form-check-label">No</label>
               </div>
           </div>
@@ -291,11 +309,13 @@
             <div class="mb-3 d-flex align-items-center">
               <label class="me-3">Did you or your spouse pay any tuition costs or student loan interest?  </label>
               <div class="form-check me-3">
-                <input type="radio" class="form-check-input" formControlName="option19">
+                <input type="radio" class="form-check-input" formControlName="question10"
+                value="Yes">
                 <label class="form-check-label">Yes</label>
               </div>
               <div class="form-check">
-                <input type="radio" class="form-check-input" formControlName="option20">
+                <input type="radio" class="form-check-input" formControlName="question10"
+                value="No">
                 <label class="form-check-label">No</label>
               </div>
           </div>
@@ -307,11 +327,13 @@
             <div class="mb-3 d-flex align-items-center">
               <label class="me-3">Did you purchase or sell your principal home during the past year?   </label>
               <div class="form-check me-3">
-                <input type="radio" class="form-check-input"formControlName="option21">
+                <input type="radio" class="form-check-input"formControlName="question11"
+                value="Yes">
                 <label class="form-check-label">Yes</label>
               </div>
               <div class="form-check">
-                <input type="radio" class="form-check-input" formControlName="option22">
+                <input type="radio" class="form-check-input" formControlName="question11"
+                value="No">
                 <label class="form-check-label">No</label>
               </div>
           </div>
@@ -323,11 +345,13 @@
             <div class="mb-3 d-flex align-items-center">
               <label class="me-3">Did you or your spouse live or work in a different state from FL over the past year?  </label>
               <div class="form-check me-3">
-                <input type="radio" class="form-check-input" formControlName="option23">
+                <input type="radio" class="form-check-input" formControlName="question12"
+                value="Yes">
                 <label class="form-check-label">Yes</label>
               </div>
               <div class="form-check">
-                <input type="radio" class="form-check-input" formControlName="option24">
+                <input type="radio" class="form-check-input" formControlName="question12"
+                value="No">
                 <label class="form-check-label">No</label>
               </div>
           </div>
@@ -340,7 +364,7 @@
 
       <!-- Sección 3 -->
       <div *ngIf="currentSection === 3">
-        <h2>Sección 3</h2>
+        <h2>Section 3</h2>
         <div class="row">
           <div class="col-md-12">
             <label class="me-3">Please select if any of the following applies to you or your spouse:</label>
@@ -351,11 +375,13 @@
                     <!-- Checkboxes con label en una fila -->
                   <div class="mb-3 d-flex align-items-center">
                     <div class="form-check me-3">
-                      <input type="checkbox" class="form-check-input" formControlName="option25">
+                      <input type="checkbox" class="form-check-input" formControlName="Identity_Protection_PIN"
+                      value='Identity Protection PIN'>
                       <label class="form-check-label">Identity Protection PIN</label>
                     </div>
                     <div class="form-check">
-                      <input type="checkbox" class="form-check-input" formControlName="option27">
+                      <input type="checkbox" class="form-check-input" formControlName="Solar_panels"
+                      value='Solar panels'>
                       <label class="form-check-label">Solar panels</label>
                     </div>
                   </div>
@@ -365,11 +391,13 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-check">
-                    <input type="checkbox" class="form-check-input" formControlName="option26">
+                    <input type="checkbox" class="form-check-input" formControlName="Unemployment"
+                    value='Unemployment'>
                     <label class="form-check-label">Unemployment</label>
                   </div>
                   <div class="form-check">
-                    <input type="checkbox" class="form-check-input" formControlName="option28">
+                    <input type="checkbox" class="form-check-input" formControlName="Daycare_dependent_care"
+                    value='Daycare/dependent care'>
                     <label class="form-check-label" >Daycare/dependent care</label>
                   </div>
                 </div>
@@ -385,27 +413,29 @@
                   <div class="col-md-3">
                     <br>
                     <div class="form-check">
-                      <input type="radio" class="form-check-input" formControlName="option29">
+                      <input type="radio" class="form-check-input" formControlName="question13"
+                      value="checking">
                       <label class="form-check-label">Checking</label>
                     </div>
                   </div>
                   <div class="col-md-3">
                     <br>
                     <div class="form-check">
-                      <input type="checkbox" class="form-check-input" formControlName="option30">
+                      <input type="radio" class="form-check-input" formControlName="question13"
+                      value="savings">
                       <label class="form-check-label">Savings</label>
                     </div>
                   </div>          
                   <div class="col-md-3">
                     <div class="mb-3">
                       <label>Bank Routing:</label>
-                      <input type="text" class="form-control" formControlName="bankRouting">
+                      <input type="text" class="form-control" formControlName="Bank_Routing">
                     </div>
                   </div>
                   <div class="col-md-3">
                     <div class="mb-3">
                       <label>Bank Account:</label>
-                      <input type="text" class="form-control" formControlName="bankAccount">
+                      <input type="text" class="form-control" formControlName="Bank_Account">
                     </div>
                   </div>
               </div>
