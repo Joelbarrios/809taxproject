@@ -30,7 +30,7 @@
     <div class="col-md-6">
 
       <!-- Sección 1 -->
-      <div *ngIf="currentSection === 1">
+      <div  *ngIf="currentSection === 1" formGroupName="section1">
         <h2>Section 1</h2>
         <div class="row">
           <div class="col-md-6">
@@ -183,7 +183,7 @@
       </div>
 
       <!-- Sección 2 -->
-      <div *ngIf="currentSection === 2">
+      <div *ngIf="currentSection === 2" formGroupName="section2">
         <h2>Section 2</h2>
      
         <div class="row">
@@ -363,7 +363,7 @@
       </div>
 
       <!-- Sección 3 -->
-      <div *ngIf="currentSection === 3">
+      <div *ngIf="currentSection === 3" formGroupName="section3">
         <h2>Section 3</h2>
         <div class="row">
           <div class="col-md-12">
@@ -429,13 +429,13 @@
                   <div class="col-md-3">
                     <div class="mb-3">
                       <label>Bank Routing:</label>
-                      <input type="text" class="form-control" formControlName="Bank_Routing">
+                      <input type="text" class="form-control" formControlName="bank_routing">
                     </div>
                   </div>
                   <div class="col-md-3">
                     <div class="mb-3">
                       <label>Bank Account:</label>
-                      <input type="text" class="form-control" formControlName="Bank_Account">
+                      <input type="text" class="form-control" formControlName="bank_account">
                     </div>
                   </div>
               </div>
@@ -460,7 +460,8 @@
 
               <div class="text-center mt-2">
                  <!-- Botón de enviar formulario -->
-                <button class="btn btn-success text-align-center" (click)="enviarFormulario()">Enviar Formulario</button>
+                <button class="btn btn-success text-align-center" (click)="createFormEn()"
+                [disabled]="envioEnProgreso">Enviar Formulario</button>
               </div>
       </div>
 
