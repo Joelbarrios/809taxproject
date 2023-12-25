@@ -36,13 +36,27 @@
           <div class="col-md-6">
             <div class="mb-3">
               <label>Name:</label>
-              <input type="text" class="form-control" formControlName="name">
+              <input type="text" class="form-control" formControlName="name">  
+              <span *ngIf="formEnglish.get('section1.name').getError('required')
+              && formEnglish.get('section1.name').touched" class="form-text text-danger">
+              Name is required
+              </span>
+              <span *ngIf="formEnglish.get('section1.name').getError('minlength')
+              && formEnglish.get('section1.name').touched" class="form-text text-danger">
+              At least 3 characters is required
+              </span>
+
+
             </div>
           </div>
           <div class="col-md-6">
             <div class="mb-3">
               <label>Spouse Name:</label>
               <input type="text" class="form-control" formControlName="spouse_name">
+              <span *ngIf="formEnglish.get('section1.spouse_name').getError('required')
+              && formEnglish.get('section1.spouse_name').touched" class="form-text text-danger">
+              Spouse Name is required
+              </span>
             </div>
           </div>
         </div>
@@ -52,6 +66,10 @@
             <div class="mb-3">
               <label>Phone:</label>
               <input type="tel" class="form-control" formControlName="phone">
+              <span *ngIf="formEnglish.get('section1.phone').getError('required')
+              && formEnglish.get('section1.phone').touched" class="form-text text-danger">
+              Phone is required
+              </span>
             </div>
           </div>
           <div class="col-md-6">
@@ -67,6 +85,10 @@
             <div class="mb-3">
               <label>Mail</label>
               <input type="email" class="form-control" formControlName="mail">
+              <span *ngIf="formEnglish.get('section1.mail').getError('required')
+              && formEnglish.get('section1.mail').touched" class="form-text text-danger">
+              Mail is required
+              </span>
             </div>
           </div>
           <div class="col-md-6">
@@ -82,6 +104,10 @@
             <div class="mb-3">
               <label>Current Address:</label>
               <input type="text" class="form-control" formControlName="address">
+              <span *ngIf="formEnglish.get('section1.address').getError('required')
+              && formEnglish.get('section1.address').touched" class="form-text text-danger">
+              Address is required
+              </span>
             </div>
 
           </div>
@@ -122,6 +148,11 @@
               value="married_filing_separate">
               <label class="form-check-label" >Married filing Separate</label>
             </div>
+
+            <span *ngIf="formEnglish.get('section1.filing_status').getError('required')
+            && formEnglish.get('section1.filing_status').touched" class="form-text text-danger">
+            Filing Status is required
+            </span>
           </div>
         </div>
 
@@ -141,6 +172,11 @@
                 <label class="form-check-label">No</label>
               </div>
             </div>
+
+            <span *ngIf="formEnglish.get('section1.question2').getError('required')
+            && formEnglish.get('section1.question2').touched" class="form-text text-danger">
+            Response is required
+            </span>
           </div>
         </div>
 
@@ -159,6 +195,7 @@
                 <label class="form-check-label" >No</label>
               </div>
           </div>
+          
         </div>
 
         <div class="col-md-4">
@@ -167,14 +204,22 @@
             <input type="text" class="form-control" formControlName="extraData_question3">
           </div>
         </div>
+        <span *ngIf="formEnglish.get('section1.question3').getError('required')
+        && formEnglish.get('section1.question3').touched" class="form-text text-danger">
+        Response is required
+        </span>
+        
         </div>
 
         <div class="row">
           <div class="col-md-12">
             <div class="mb-3">
               <label>Please detail full name, SSN, DOB, and relationship for any new dependents:</label>
-              <input type="text" class="form-control" formControlName="description"
-              >
+              <input type="text" class="form-control" formControlName="description">
+              <span *ngIf="formEnglish.get('section1.description').getError('required')
+              && formEnglish.get('section1.description').touched" class="form-text text-danger">
+              Response is required
+              </span>
             </div>
 
           </div>
@@ -202,6 +247,10 @@
                 <label class="form-check-label">No</label>
               </div>
             </div>
+            <span *ngIf="formEnglish.get('section2.question4').getError('required')
+            && formEnglish.get('section2.question4').touched" class="form-text text-danger">
+            Response is required
+            </span>
           </div>
         </div>
 
@@ -228,6 +277,10 @@
             <input type="text" class="form-control" formControlName="extraData_question5">
           </div>
         </div>
+        <span *ngIf="formEnglish.get('section2.question5').getError('required')
+        && formEnglish.get('section2.question5').touched" class="form-text text-danger">
+        Response is required
+        </span>
         </div>
 
         <div class="row">
@@ -246,6 +299,10 @@
                 <label class="form-check-label">No</label>
               </div>
           </div>
+          <span *ngIf="formEnglish.get('section2.question6').getError('required')
+          && formEnglish.get('section2.question6').touched" class="form-text text-danger">
+          Response is required
+          </span>
           </div>
         </div>
 
@@ -265,6 +322,10 @@
                 <label class="form-check-label">No</label>
               </div>
           </div>
+          <span *ngIf="formEnglish.get('section2.question7').getError('required')
+          && formEnglish.get('section2.question7').touched" class="form-text text-danger">
+          Response is required
+          </span>
           </div>
         </div>
 
@@ -283,6 +344,10 @@
                 <label class="form-check-label">No</label>
               </div>
           </div>
+          <span *ngIf="formEnglish.get('section2.question8').getError('required')
+          && formEnglish.get('section2.question8').touched" class="form-text text-danger">
+          Response is required
+          </span>
           </div>
         </div>
 
@@ -301,6 +366,10 @@
                 <label class="form-check-label">No</label>
               </div>
           </div>
+          <span *ngIf="formEnglish.get('section2.question9').getError('required')
+          && formEnglish.get('section2.question9').touched" class="form-text text-danger">
+          Response is required
+          </span>
           </div>
         </div>
 
@@ -319,6 +388,10 @@
                 <label class="form-check-label">No</label>
               </div>
           </div>
+          <span *ngIf="formEnglish.get('section2.question10').getError('required')
+          && formEnglish.get('section2.question10').touched" class="form-text text-danger">
+          Response is required
+          </span>
           </div>
         </div>
 
@@ -337,6 +410,10 @@
                 <label class="form-check-label">No</label>
               </div>
           </div>
+          <span *ngIf="formEnglish.get('section2.question11').getError('required')
+          && formEnglish.get('section2.question11').touched" class="form-text text-danger">
+          Response is required
+          </span>
           </div>
         </div>
 
@@ -355,11 +432,13 @@
                 <label class="form-check-label">No</label>
               </div>
           </div>
+          <span *ngIf="formEnglish.get('section2.question12').getError('required')
+          && 
+          formEnglish.get('section2.question12').touched" class="form-text text-danger">
+          Response is required
+          </span>
           </div>
         </div>
-
-
-        <!-- Agrega más campos según sea necesario -->
       </div>
 
       <!-- Sección 3 -->
@@ -400,6 +479,10 @@
                     value='Daycare/dependent care'>
                     <label class="form-check-label" >Daycare/dependent care</label>
                   </div>
+                  <!-- <span *ngIf="formEnglish.get('section2.question12').getError('required')
+                  && formEnglish.get('section2.question12').touched" class="form-text text-danger">
+                  Response is required
+                  </span> -->
                 </div>
               </div>
 
@@ -430,12 +513,20 @@
                     <div class="mb-3">
                       <label>Bank Routing:</label>
                       <input type="text" class="form-control" formControlName="bank_routing">
+                      <span *ngIf="formEnglish.get('section3.bank_routing').getError('required')
+                      && formEnglish.get('section3.bank_routing').touched" class="form-text text-danger">
+                      Response is required
+                      </span>
                     </div>
                   </div>
                   <div class="col-md-3">
                     <div class="mb-3">
                       <label>Bank Account:</label>
                       <input type="text" class="form-control" formControlName="bank_account">
+                      <span *ngIf="formEnglish.get('section3.bank_account').getError('required')
+                      && formEnglish.get('section3.bank_account').touched" class="form-text text-danger">
+                      Response is required
+                      </span>
                     </div>
                   </div>
               </div>
@@ -444,6 +535,11 @@
                 <div class="col-md-12">
                   <div class="checkbox checkbox-primary p-t-0">
                     <input type="checkbox" formControlName="terms">
+                    <span *ngIf="formEnglish.get('section3.terms').getError('required')
+                    && formEnglish.get('section3.terms').touched" class="form-text text-danger">
+                    Terms should be accepted
+                    </span>
+                    
                     <label>I agree to all <a href="#">Terms</a></label>
 
                   </div>
@@ -452,9 +548,7 @@
 
               <div class="row">
                 <div class="col text-danger">
-                  <p *ngIf="campoNoValido('name')">Name is mandatory</p>
                   <p *ngIf="aceptaTerminos()">Terms should be accepted</p>
-
                 </div>
               </div>
 

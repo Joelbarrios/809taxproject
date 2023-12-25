@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { of } from 'rxjs';
+import { of,throwError } from 'rxjs';
+import {map, catchError} from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Form2023en } from './form2023en';
+import Swal from 'sweetalert2';
+import {Router} from '@angular/router';
 
 
 @Injectable({
@@ -13,19 +15,56 @@ export class Form2023enService {
   private url:string='http://localhost:8080/api/form';
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,
+    private router:Router) { }
 
-  public form2023En!:Form2023en;
 
-getForm():Observable<Form2023en>{
+getForms():Observable<any>{
 
-  return this.http.get<Form2023en>(this.url)
+  return this.http.get<any>(this.url)
 }
 
-  createForm(formEnglish:any):Observable<any>{
 
-    return this.http.post<any>(this.url,formEnglish,{headers:this.httpHeaders})
 
+createForm(formEnglish:any):Observable<any>{
+
+    return this.http.post<any>(this.url,formEnglish,{headers:this.httpHeaders}).pipe(
+      catchError(e=>{
+        console.error(e.error.mensaje);
+
+        Swal.fire("Error al crear el form",e.error.mensaje, 'error');
+        return throwError(e);
+
+      })
+    )
+
+  }
+
+  getForm(id):Observable<any>{
+    return this.http.get<any>(`${this.url}/{id}`).pipe(
+      catchError(e=>{
+
+        console.log(e.error.mensaje)
+        //this.router.navigate(['/homepage/form']);
+
+        Swal.fire("Error al encontrar el form",e.error.mensaje, 'error');
+
+        return throwError(e);
+
+      })
+    )
+  }
+
+  delete(id:number):Observable<any>{
+    return this.http.delete<any>(`${this.url}${id}`, {headers:this.httpHeaders}).pipe(
+      catchError(e=>{
+        console.error(e.error.mensaje);
+
+        Swal.fire("Error al eliminar el form",e.error.mensaje, 'error');
+        return throwError(e);
+
+      })
+    )
   }
 
 
