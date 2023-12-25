@@ -19,13 +19,13 @@ export class Form2023enComponent {
   activated:boolean=false;
   public formEnglish: FormGroup;
   submissionDate: string='';
-  public  createdAt: Date;
+  public createAt!:Date;
   
 
   ngOnInit(){
     
-
     this.formEnglish= this.fb.group({
+      createAt:[null],
       section1: this.fb.group({
         name:['',[Validators.required,Validators.minLength(3)]],
         spouse_name:['',[Validators.required,Validators.minLength(4)]],
@@ -62,11 +62,10 @@ export class Form2023enComponent {
         bank_routing:['',[Validators.required]],
         bank_account:['',[Validators.required]],
         terms:[false, [Validators.requiredTrue]]
-      }),
-      createdAt:  [new Date()]
+      })
     });
   
-
+    
   }
 
   constructor(private fb:FormBuilder,private formService:Form2023enService
@@ -109,15 +108,16 @@ export class Form2023enComponent {
   const datosSeccion1 = this.formEnglish.get('section1').value;
   const datosSeccion2 = this.formEnglish.get('section2').value;
   const datosSeccion3 = this.formEnglish.get('section3').value;
-  const createdAt = this.setCreatedAt();
-
-  
+  const createAt = new Date();
+  this.formEnglish.patchValue({
+    createAt: createAt  // Reemplaza 'fecha' con el nombre de tu campo de fecha
+  });
 
     const datosCompletos = {
+      createAt,
       ...datosSeccion1,
       ...datosSeccion2,
       ...datosSeccion3,
-      createdAt
 
     };
 
@@ -125,8 +125,9 @@ export class Form2023enComponent {
     if(this.formEnglish.valid && this.currentSection===3){
 
       this.formSummited=true;
-        this.envioEnProgreso = true;
-        console.log(this.createdAt);
+      this.envioEnProgreso = true;
+        
+
      // this.router.navigateByUrl('/dashboard')
         this.formService.createForm(datosCompletos)
         .subscribe(resp=>{
