@@ -453,38 +453,18 @@
                 <div class="col-md-12">
                     <!-- Checkboxes con label en una fila -->
                   <div class="mb-3 d-flex align-items-center">
-                    <div class="form-check me-3">
-                      <input type="checkbox" class="form-check-input" formControlName="Identity_Protection_PIN"
-                      value='Identity Protection PIN'>
-                      <label class="form-check-label">Identity Protection PIN</label>
-                    </div>
-                    <div class="form-check">
-                      <input type="checkbox" class="form-check-input" formControlName="Solar_panels"
-                      value='Solar panels'>
-                      <label class="form-check-label">Solar panels</label>
-                    </div>
+                      <div class="mb-3" formGroupName="opciones">
+                        <div *ngFor="let opcion of opciones" class="form-check">
+                          <input class="form-check-input" type="checkbox" [formControlName]="opcion.id" />
+                          <label class="form-check-label">{{ opcion.label }}</label>
+                        </div>
+                      </div>
+              
                   </div>
 
                 </div>
               </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-check">
-                    <input type="checkbox" class="form-check-input" formControlName="Unemployment"
-                    value='Unemployment'>
-                    <label class="form-check-label">Unemployment</label>
-                  </div>
-                  <div class="form-check">
-                    <input type="checkbox" class="form-check-input" formControlName="Daycare_dependent_care"
-                    value='Daycare/dependent care'>
-                    <label class="form-check-label" >Daycare/dependent care</label>
-                  </div>
-                  <!-- <span *ngIf="formEnglish.get('section2.question12').getError('required')
-                  && formEnglish.get('section2.question12').touched" class="form-text text-danger">
-                  Response is required
-                  </span> -->
-                </div>
-              </div>
+            
 
               <div class="row">
                 <div class="col-md-12">

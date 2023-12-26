@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup,FormBuilder, Validators} from '@angular/forms';
+import { FormGroup,FormBuilder, Validators, FormControl} from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Form2023enService } from './form2023enService';
 import {Router, ActivatedRoute} from '@angular/router';
@@ -20,9 +20,21 @@ export class Form2023enComponent {
   public formEnglish: FormGroup;
   submissionDate: string='';
   public createAt!:Date;
+  opciones = [
+    { id: 'identity_protection_pin', label: 'Identity protection_pin' },
+    { id: 'solar_panels', label: 'Solar Panels' },
+    { id: 'unemployment', label: 'Unemployment' },
+    { id: 'daycare_dependent_care', label: 'Daycare/dependent care' }
+  ];
+
+  // Variable para almacenar los IDs seleccionados
+  idsSeleccionados: string[] = [];
+  
   
 
   ngOnInit(){
+
+    
     
     this.formEnglish= this.fb.group({
       createAt:[null],
@@ -54,10 +66,7 @@ export class Form2023enComponent {
         question12:['',[Validators.required]],
       }),
       section3:this.fb.group({
-        Identity_Protection_PIN:[''],
-        Solar_panels:[''],
-        Unemployment:[''],
-        Daycare_dependent_care:[''],
+        opciones: this.inicializarOpciones(),
         question13:['',[Validators.required]],
         bank_routing:['',[Validators.required]],
         bank_account:['',[Validators.required]],
@@ -73,6 +82,13 @@ export class Form2023enComponent {
 
   }
 
+  private inicializarOpciones() {
+    const formControls = {};
+    this.opciones.forEach(opcion => {
+      formControls[opcion.id] = new FormControl(false);
+    });
+    return this.fb.group(formControls);
+  }
 
 // isValidField(field:string):boolean | null{
 //   return this.formEnglish.get[field].errors
@@ -105,6 +121,17 @@ export class Form2023enComponent {
  //CreateFormEnglish
  createFormEn(){
 
+  const opcionesSeleccionadas = this.opciones.filter(opcion =>
+    this.formEnglish.get('section3.opciones').get(opcion.id).value === true
+  );
+   // Obtener solo los valores de 'id'
+ // Obtener solo los valores de 'id'
+ this.idsSeleccionados = opcionesSeleccionadas.map(opcion => opcion.id);
+  // Asignar cada ID a una variable independiente
+  const [identity_protection_pin, solar_panels,
+    unemployment, daycare_dependent_care] = this.idsSeleccionados;
+  console.log('Opciones seleccionadas:', identity_protection_pin,solar_panels,unemployment,daycare_dependent_care);
+
   const datosSeccion1 = this.formEnglish.get('section1').value;
   const datosSeccion2 = this.formEnglish.get('section2').value;
   const datosSeccion3 = this.formEnglish.get('section3').value;
@@ -114,10 +141,15 @@ export class Form2023enComponent {
   });
 
     const datosCompletos = {
+      identity_protection_pin,
+      solar_panels,
+      unemployment,
+      daycare_dependent_care,
       createAt,
       ...datosSeccion1,
       ...datosSeccion2,
       ...datosSeccion3,
+    
 
     };
 
@@ -129,6 +161,7 @@ export class Form2023enComponent {
         
 
      // this.router.navigateByUrl('/dashboard')
+     console.log(datosCompletos);
         this.formService.createForm(datosCompletos)
         .subscribe(resp=>{
   
@@ -164,11 +197,6 @@ prevSection() {
   }
 }
 
-private setCreatedAt() {
-  this.formEnglish.patchValue({
-    createdAt: new Date()
-  });
-}
 
 campoNoValido(campo:string):boolean{
 

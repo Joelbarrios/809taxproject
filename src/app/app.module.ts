@@ -22,8 +22,6 @@ import { Approutes } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SpinnerComponent } from './shared/spinner.component';
 
-import { DatePipe } from '@angular/common';
-
 
 
 
@@ -52,8 +50,6 @@ import { DatePipe } from '@angular/common';
       provide: LocationStrategy,
       useClass: PathLocationStrategy
     },
-    [DatePipe]
-    
   ],
   bootstrap: [AppComponent]
 })
