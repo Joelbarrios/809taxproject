@@ -10,6 +10,7 @@ import { NgbdDropdownBasicComponent } from './dropdown-collapse/dropdown-collaps
 import { NgbdnavBasicComponent } from './nav/nav.component';
 import { CardsComponent } from './card/card.component';
 import { TableComponent } from "./table/table.component";
+import {NgxPaginationModule} from 'ngx-pagination'; 
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { TableComponent } from "./table/table.component";
     NgbdDropdownBasicComponent,
     NgbdnavBasicComponent,
     CardsComponent,
-    TableComponent
+    TableComponent,
+    NgxPaginationModule
   ],
 })
 export class ComponentsModule { }

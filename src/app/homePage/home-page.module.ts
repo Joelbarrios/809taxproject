@@ -8,13 +8,14 @@ import { Form2023esComponent } from './form2023es/form2023es.component';
 import { FormsModule } from '@angular/forms';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormSummitedComponent } from './formSummited/form-summited/form-summited.component';
 
 
 @NgModule({
   declarations: [ 
     
   
-    HomePageComponent, Form2023enComponent, Form2023esComponent
+    HomePageComponent, Form2023enComponent, Form2023esComponent, FormSummitedComponent
   ],
   imports: [
     CommonModule,

@@ -69,6 +69,12 @@
               <span *ngIf="formEnglish.get('section1.phone').getError('required')
               && formEnglish.get('section1.phone').touched" class="form-text text-danger">
               Phone is required
+              <hr>
+              </span>
+              
+              <span *ngIf="formEnglish.get('section1.phone').hasError('numeroInvalido')
+              && formEnglish.get('section1.phone').touched" class="form-text text-danger">
+                El número debe tener exactamente 10 dígitos.
               </span>
             </div>
           </div>
@@ -76,6 +82,10 @@
             <div class="mb-3">
               <label>Phone 2:</label>
               <input type="tel" class="form-control" formControlName="phone2">
+              <span *ngIf="formEnglish.get('section1.phone2').hasError('numeroInvalido')
+              && formEnglish.get('section1.phone').touched" class="form-text text-danger">
+                El número debe tener exactamente 10 dígitos.
+              </span>
             </div>
           </div>
         </div>
@@ -496,6 +506,12 @@
                       <span *ngIf="formEnglish.get('section3.bank_routing').getError('required')
                       && formEnglish.get('section3.bank_routing').touched" class="form-text text-danger">
                       Response is required
+                      <hr>
+                      </span>
+                      
+                      <span *ngIf="formEnglish.get('section3.bank_routing').hasError('numeroInvalido')
+                      && formEnglish.get('section3.bank_routing').touched" class="form-text text-danger">
+                        El número debe tener exactamente 9 dígitos.
                       </span>
                     </div>
                   </div>

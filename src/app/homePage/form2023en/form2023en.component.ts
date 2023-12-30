@@ -3,7 +3,7 @@ import { FormGroup,FormBuilder, Validators, FormControl} from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Form2023enService } from './form2023enService';
 import {Router, ActivatedRoute} from '@angular/router';
-import { formatDate } from '@angular/common' 
+import { formatDate } from '@angular/common' ;
 
 @Component({
   selector: 'app-form2023en',
@@ -26,6 +26,8 @@ export class Form2023enComponent {
     { id: 'unemployment', label: 'Unemployment' },
     { id: 'daycare_dependent_care', label: 'Daycare/dependent care' }
   ];
+  private errores:string[];
+
 
   // Variable para almacenar los IDs seleccionados
   idsSeleccionados: string[] = [];
@@ -34,15 +36,15 @@ export class Form2023enComponent {
 
   ngOnInit(){
 
-    
+    this.getAllForms();
     
     this.formEnglish= this.fb.group({
       createAt:[null],
       section1: this.fb.group({
         name:['',[Validators.required,Validators.minLength(3)]],
         spouse_name:['',[Validators.required,Validators.minLength(4)]],
-        phone:['',[Validators.required]],
-        phone2:['',[Validators.required]],
+        phone:['',[Validators.required, , this.validarNumeroFijo()]],
+        phone2:['',[Validators.required, , this.validarNumeroFijo()]],
         mail:['',[Validators.required, Validators.email]],
         mail2:['',[Validators.required, Validators.email]],
         address:['',[Validators.required]],
@@ -68,7 +70,7 @@ export class Form2023enComponent {
       section3:this.fb.group({
         opciones: this.inicializarOpciones(),
         question13:['',[Validators.required]],
-        bank_routing:['',[Validators.required]],
+        bank_routing:['',[Validators.required, this.validarNumeroUnico9()]],
         bank_account:['',[Validators.required]],
         terms:[false, [Validators.requiredTrue]]
       })
@@ -140,6 +142,7 @@ export class Form2023enComponent {
     createAt: createAt  // Reemplaza 'fecha' con el nombre de tu campo de fecha
   });
 
+
     const datosCompletos = {
       identity_protection_pin,
       solar_panels,
@@ -165,16 +168,14 @@ export class Form2023enComponent {
         this.formService.createForm(datosCompletos)
         .subscribe(resp=>{
   
-          Swal.fire({
-            title: "Form summitted successfully",
-            text: "Thanks for sending the form `Mr/Mrs. ${datosSeccion1.name}`",
-            icon: "success"
-          });
+          Swal.fire("Thanks for sending de form Mr/Mrs `${datosSeccion1.name}`",'success');
+
           this.formEnglish.reset();
         //  this.router.navigateByUrl('/dashboard');
         },(err)=>{
         
-          return;
+          this.errores=err.error.errors as string[];
+          console.error(err.error.errors);
         });
 
     }else{
@@ -184,6 +185,55 @@ export class Form2023enComponent {
     }
 
  }
+
+ getAllForms(){
+
+  this.formData = this.formService.getForms()
+  .subscribe((resp)=>{
+    this.formData = resp;
+    console.log(this.formData);
+  },error=>{
+    console.log('error')
+  })
+
+ }
+
+
+validarNumeroFijo() {
+  return (control) => {
+    const value = control.value;
+
+    // Verificar si el valor tiene exactamente 10 dígitos
+    if (value && /^\d{10}$/.test(value)) {
+      return null; // La validación pasa
+    } else {
+      control.setErrors({ numeroInvalido: true }); // Asignar error al control
+      return { numeroInvalido: true }; // La validación falla
+    }
+  };
+}
+
+validarNumeroUnico9() {
+  return (control) => {
+    const value = control.value;
+
+    // Verificar si el valor tiene exactamente 9 dígitos
+    if (value && /^\d{9}$/.test(value)) {
+      // Verificar si todos los dígitos son únicos
+      const digitosUnicos = new Set(value.toString().split(''));
+      if (digitosUnicos.size === 9) {
+        return null; // La validación pasa
+      } else {
+        control.setErrors({ numeroNoUnico: true }); // Asignar error al control
+        return { numeroNoUnico: true }; // La validación falla
+      }
+    } else {
+      control.setErrors({ numeroInvalido: true }); // Asignar error al control
+      return { numeroInvalido: true }; // La validación falla
+    }
+  };
+}
+
 
  nextSection() {
   if (this.currentSection < 3) {
