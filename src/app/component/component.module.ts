@@ -1,30 +1,37 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ComponentsRoutes } from './component.routing';
-import { NgbdpaginationBasicComponent } from './pagination/pagination.component';
-import { NgbdDropdownBasicComponent } from './dropdown-collapse/dropdown-collapse.component';
-import { NgbdnavBasicComponent } from './nav/nav.component';
-import { CardsComponent } from './card/card.component';
 import { TableComponent } from "./table/table.component";
-import {NgxPaginationModule} from 'ngx-pagination'; 
+import {NgxPaginationModule, PaginationControlsComponent} from 'ngx-pagination'; 
+import { FormsModule } from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { ArchivedFormComponent } from './archived/archived-form/archived-form.component';
+
+
+
+
+
 
 @NgModule({
+
   imports: [
     CommonModule,
     RouterModule.forChild(ComponentsRoutes),
-    FormsModule,
-    ReactiveFormsModule,
     NgbModule,
-    NgbdpaginationBasicComponent,
-    NgbdDropdownBasicComponent,
-    NgbdnavBasicComponent,
-    CardsComponent,
-    TableComponent,
-    NgxPaginationModule
+    NgxPaginationModule,
+    FormsModule,
+    ReactiveFormsModule
+    
   ],
+
+  declarations: [
+      ArchivedFormComponent
+
+  ]
+
+
+
 })
 export class ComponentsModule { }

@@ -14,7 +14,6 @@ import { FormSummitedComponent } from './formSummited/form-summited/form-summite
 @NgModule({
   declarations: [ 
     
-  
     HomePageComponent, Form2023enComponent, Form2023esComponent, FormSummitedComponent
   ],
   imports: [

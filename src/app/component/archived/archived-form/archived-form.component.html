@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Project Listing</h4>
+          <h5 class="card-subtitle text-muted">Overview of the projects</h5>
+          <div class="table-responsive">
+            <input [(ngModel)]="terminoBusqueda" class="form-control" type="search" placeholder="Buscar por nombre, cónyuge o correo">
+            <table class="table align-middle text-nowrap">
+                <thead>
+                    <tr>
+                        <th class="text-dark font-medium fs-4">USER</th>
+                        <th class="text-dark font-medium fs-4">TAX YEAR</th>
+                        <th class="text-dark font-medium fs-4" >DATE</th>
+                        <th class="text-dark font-medium fs-4">ACTIONS</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="formData.length > 0">
+                    <tr *ngFor='let form of filtrarFormData()| paginate
+                    : {
+                        itemsPerPage: tableSize,
+                        currentPage: page,
+                        totalItems: count
+                      };
+                let i = index '>
+                <ng-container *ngIf="form.transferido">
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img src="./../../../assets/images/users/user1.jpg" alt="user" width="45" class="rounded-circle">
+                                <div class="ms-3">
+                                    <h5 class="mb-0 font-medium">{{form.name}}</h5>
+                                    <span class="text-muted">{{form.mail}}</span>
+                                    <h5 class="text-muted">{{form.phone}}</h5>
+                                </div>
+                            </div>
+                        </td>
+                        
+                        <td>
+                         2018
+                        </td>
+                        <td>
+                          <h5 class="mb-0 fw-normal">{{form.createAt}}</h5>
+                      </td>
+                        <td>
+                          <button type="button" class="btn btn-success m-2">Check</button>
+                          <button *ngIf="!form.transferido" (click)="transferirObjeto(form)" 
+                          class="btn btn-primary m-2" >Complete</button>
+                        </td>
+                      </ng-container>
+                    </tr>   
+                    
+  
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-center">
+              <pagination-controls
+                previousLabel="Prev"
+                nextLabel="Next"
+                (pageChange)="onTableDataChange($event)"
+              >
+              </pagination-controls>
+        </div>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+  

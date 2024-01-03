@@ -19,7 +19,7 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
-    path: '/#',
+    path: '/component/archived',
     title: 'Archived',
     icon: 'bi bi-people',
     class: '',

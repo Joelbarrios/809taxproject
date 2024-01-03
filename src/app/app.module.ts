@@ -10,8 +10,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { FullComponent } from './layouts/full/full.component';
 
@@ -23,6 +23,10 @@ import { Approutes } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SpinnerComponent } from './shared/spinner.component';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { ComponentsModule } from './component/component.module';
+
+
+
 
 
 
@@ -30,7 +34,7 @@ import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
-    SpinnerComponent,
+    SpinnerComponent
 
 
   ],
@@ -41,12 +45,14 @@ import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+
     NgbModule,
     RouterModule.forRoot(Approutes, { useHash: false }),
     FullComponent,
     NavigationComponent,
     SidebarComponent,
     NgbPaginationModule
+    
   ],
   providers: [
     {

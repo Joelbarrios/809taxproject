@@ -4,6 +4,7 @@ import { NgbdDropdownBasicComponent } from './dropdown-collapse/dropdown-collaps
 import { NgbdnavBasicComponent } from './nav/nav.component';
 import { CardsComponent } from './card/card.component';
 import { TableComponent } from './table/table.component';
+import { ArchivedFormComponent } from './archived/archived-form/archived-form.component';
 
 
 export const ComponentsRoutes: Routes = [
@@ -15,8 +16,8 @@ export const ComponentsRoutes: Routes = [
 				component: TableComponent
 			},
 			{
-				path: 'card',
-				component: CardsComponent
+				path: 'archived',
+				component: ArchivedFormComponent
 			},
 			{
 				path: 'pagination',

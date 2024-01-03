@@ -91,6 +91,25 @@ createForm(formEnglish:any):Observable<any>{
     return this.http.get<any>(this.url, { params });
   }
 
+  transferirYActualizar(id: number): Observable<any> {
+
+    return this.http.put<any>(`${this.url}/${id}/transferir`,{headers:this.httpHeaders}).pipe(
+      catchError(e=>{
+        console.error(e.error.mensaje);
+  
+        if(e.status==400){
+          return throwError(e);
+        }
+  
+        Swal.fire("Error al transferir",e.error.mensaje, 'error');
+        return throwError(e);
+  
+      })
+    )
+
+  }
+
+ 
   
 
 

@@ -11,6 +11,8 @@ import { NgIf } from '@angular/common';
 import { Form2023enService } from 'src/app/homePage/form2023en/form2023enService';
 import {Router, ActivatedRoute} from '@angular/router';
 import { FormGroup,FormBuilder, Validators, FormControl} from '@angular/forms';
+import { NgModel,FormsModule } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 
 const FILTER_PAG_REGEX = /[^0-9]/g;
@@ -18,7 +20,7 @@ const FILTER_PAG_REGEX = /[^0-9]/g;
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports:[NgFor,NgbDropdownModule,NgbModule,NgbCollapseModule,NgxPaginationModule,NgIf],
+  imports:[NgFor,NgbDropdownModule,NgbModule,NgbCollapseModule,NgxPaginationModule,NgIf,FormsModule],
   templateUrl: 'table.component.html'
 })
 export class TableComponent {
@@ -31,10 +33,19 @@ export class TableComponent {
   count: number = 0;
   tableSize: number = 5;
   tableSizes: any = [3, 6, 9, 12];
-
   filteredData: any[] = [];
-  searchText = '';
+  registerFalse:any[]=[];
 
+    // Variable para almacenar el término de búsqueda
+    terminoBusqueda: string = '';
+
+    RegistroTransferido = [
+      // ... registros completos se agregarán aquí
+    ];
+
+
+  
+  
   constructor(private fb:FormBuilder,private formService:Form2023enService
     , private router:Router) {
 
@@ -62,15 +73,23 @@ export class TableComponent {
 
     ngOnInit(){
       this.getAllForms();
+  
+  }
 
-      
-     
-    }
+ // Método para filtrar la lista
+ filtrarFormData() {
+  return this.formData.filter(data =>
+    data.name.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
+    data.spouse_name.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
+    data.mail.toLowerCase().includes(this.terminoBusqueda.toLowerCase())
+  );
+}
 
     getAllForms(): void {
       this.formService.getForms().subscribe(
         (response) => {
           this.formData = response;
+       
           console.log(response);
         },
         (error) => {
@@ -108,5 +127,57 @@ export class TableComponent {
     formatInput(input: HTMLInputElement) {
       input.value = input.value.replace(FILTER_PAG_REGEX, '');
     }
-    
+
+ // Método para transferir un objeto de una tabla a otra y actualizar el campo transferido
+ transferirObjeto(objeto: any) {
+  Swal.fire({
+    title: '¿Estás seguro?',
+    text: '¿Quieres transferir este objeto?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Sí, transferirlo'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.realizarTransferencia(objeto);
+    }
+  });
+}
+
+realizarTransferencia(objeto: any) {
+  this.formService.transferirYActualizar(objeto.id).subscribe(
+    response => {
+      if (response && response.mensaje) {
+        // Mostrar SweetAlert de mensaje exitoso
+        Swal.fire({
+          icon: 'success',
+          title: 'Éxito',
+          text: response.mensaje
+        }).then(() => {
+          // Recargar la página después de cerrar el alert
+          location.reload();
+        });
+      }
+    },
+    error => {
+      // Manejar el error aquí
+      console.error('Error en la transferencia y marcado:', error);
+    }
+  );
+}
+
+private actualizarCampoTransferido(objeto: any) {
+  // Encuentra el índice del objeto en la tabla original
+  const index = this.formData.findIndex(item => item.id === objeto.id);
+
+  // Actualiza el campo transferido
+  if (index !== -1) {
+    this.formData[index].transferido = true;
+  }
+}
+
+
+
+
 }

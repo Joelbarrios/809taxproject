@@ -5,24 +5,25 @@
         <h4 class="card-title">Project Listing</h4>
         <h5 class="card-subtitle text-muted">Overview of the projects</h5>
         <div class="table-responsive">
-          
+          <input [(ngModel)]="terminoBusqueda" class="form-control" type="search" placeholder="Buscar por nombre, cónyuge o correo">
           <table class="table align-middle text-nowrap">
               <thead>
                   <tr>
                       <th class="text-dark font-medium fs-4">USER</th>
                       <th class="text-dark font-medium fs-4">TAX YEAR</th>
-                      <th class="text-dark font-medium fs-4">DATE</th>
+                      <th class="text-dark font-medium fs-4" >DATE</th>
                       <th class="text-dark font-medium fs-4">ACTIONS</th>
                   </tr>
               </thead>
-              <tbody>
-                  <tr *ngFor='let form of formData | paginate
+              <tbody *ngIf="formData.length > 0">
+                  <tr *ngFor='let form of filtrarFormData()| paginate
                   : {
                       itemsPerPage: tableSize,
                       currentPage: page,
                       totalItems: count
                     };
-              let i = index'>
+              let i = index '>
+              <ng-container *ngIf="!form.transferido">
                       <td>
                           <div class="d-flex align-items-center">
                               <img src="./../../../assets/images/users/user1.jpg" alt="user" width="45" class="rounded-circle">
@@ -42,8 +43,10 @@
                     </td>
                       <td>
                         <button type="button" class="btn btn-success m-2">Check</button>
-                        <button type="button" class="btn btn-primary m-2">Complete</button>
+                        <button *ngIf="!form.transferido" (click)="transferirObjeto(form)" 
+                        class="btn btn-primary m-2" >Complete</button>
                       </td>
+                    </ng-container>
                   </tr>   
                   
 
