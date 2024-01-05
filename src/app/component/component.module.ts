@@ -8,6 +8,10 @@ import {NgxPaginationModule, PaginationControlsComponent} from 'ngx-pagination';
 import { FormsModule } from '@angular/forms';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ArchivedFormComponent } from './archived/archived-form/archived-form.component';
+import { FormDetailComponent } from './form-detail/form-detail.component';
+import { TableSpanishComponent } from './table-spanish/table-spanish.component';
+import { ArchivedEsComponent } from './archivedEs/archived-es/archived-es.component';
+
 
 
 
@@ -27,7 +31,10 @@ import { ArchivedFormComponent } from './archived/archived-form/archived-form.co
   ],
 
   declarations: [
-      ArchivedFormComponent
+      ArchivedFormComponent,
+      FormDetailComponent,
+      TableSpanishComponent,
+      ArchivedEsComponent
 
   ]
 

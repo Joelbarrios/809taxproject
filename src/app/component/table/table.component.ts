@@ -1,5 +1,4 @@
 import { Component, OnInit  } from '@angular/core';
-import { Product, TopSelling, TableRows, Employee } from './table-data';
 import { NgFor } from '@angular/common';
 import {
   NgbDropdownModule,
@@ -25,9 +24,7 @@ const FILTER_PAG_REGEX = /[^0-9]/g;
 })
 export class TableComponent {
   
-  topSelling: Product[];
   formData: any = [];
-  trow: TableRows[];
   now:any;
   page: number = 1;
   count: number = 0;
@@ -49,9 +46,6 @@ export class TableComponent {
   constructor(private fb:FormBuilder,private formService:Form2023enService
     , private router:Router) {
 
-    this.topSelling = TopSelling;
-
-    this.trow = Employee;
     this.now= new Date();
   }
   
@@ -175,6 +169,10 @@ private actualizarCampoTransferido(objeto: any) {
   if (index !== -1) {
     this.formData[index].transferido = true;
   }
+}
+
+verDetalle(id: number): void {
+  this.router.navigate(['component/form/', id]);
 }
 
 

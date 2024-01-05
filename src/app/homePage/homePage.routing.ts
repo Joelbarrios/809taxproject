@@ -14,6 +14,10 @@ export const HomePageComponentRoutes: Routes = [
 			{
 				path: 'form',
 				component: Form2023enComponent
+			},
+			{
+				path: 'form-es',
+				component: Form2023esComponent
 			}
 		]
 	}

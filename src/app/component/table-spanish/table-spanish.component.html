@@ -2,17 +2,17 @@
     <div class="col-12">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Project Listing</h4>
-          <h5 class="card-subtitle text-muted">Overview of the projects</h5>
+          <h4 class="card-title">Listado del proyecto</h4>
+          <h5 class="card-subtitle text-muted">-</h5>
           <div class="table-responsive">
             <input [(ngModel)]="terminoBusqueda" class="form-control" type="search" placeholder="Buscar por nombre o correo">
             <table class="table align-middle text-nowrap">
                 <thead>
                     <tr>
-                        <th class="text-dark font-medium fs-4">USER</th>
+                        <th class="text-dark font-medium fs-4">Usuario</th>
                         <th class="text-dark font-medium fs-4">TAX YEAR</th>
-                        <th class="text-dark font-medium fs-4" >DATE</th>
-                        <th class="text-dark font-medium fs-4">ACTIONS</th>
+                        <th class="text-dark font-medium fs-4" >FECHA</th>
+                        <th class="text-dark font-medium fs-4">ACCIONES</th>
                     </tr>
                 </thead>
                 <tbody *ngIf="formData.length > 0">
@@ -23,7 +23,7 @@
                         totalItems: count
                       };
                 let i = index '>
-                <ng-container *ngIf="form.transferido">
+                <ng-container *ngIf="!form.transferido">
                         <td>
                             <div class="d-flex align-items-center">
                                 <img src="./../../../assets/images/users/user1.jpg" alt="user" width="45" class="rounded-circle">
@@ -42,7 +42,8 @@
                           <h5 class="mb-0 fw-normal">{{form.createAt}}</h5>
                       </td>
                         <td>
-                          <button type="button" class="btn btn-success m-2">Check</button>
+                          <button type="button" class="btn btn-success m-2"
+                          (click)="verDetalle(form.id)">Check</button>
                           <button *ngIf="!form.transferido" (click)="transferirObjeto(form)" 
                           class="btn btn-primary m-2" >Complete</button>
                         </td>

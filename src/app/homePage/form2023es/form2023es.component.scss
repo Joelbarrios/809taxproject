@@ -1,0 +1,99 @@
+/* formulario.component.css */
+
+/* Estilos generales para el formulario */
+.container {
+    background-color: #ebeff3;
+    padding: 20px;
+    border: 0.40rem solid #f8f9fa;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+  }
+  
+  
+  /* Estilos para el slider */
+  .form-range {
+    width: 100%;
+  }
+  
+  /* Estilos para las secciones */
+  h2 {
+    color: #007bff;
+  }
+  
+  /* Estilos para los campos de entrada */
+  .form-control {
+    margin-bottom: 15px;
+  }
+  
+  /* Estilos para las casillas de verificación */
+  .form-check {
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos para el botón de navegación */
+  .btn-secondary {
+    background-color: #6c757d;
+  }
+  
+  /* Estilos para el botón de enviar formulario */
+  .btn-success {
+    background-color: #28a745;
+  }
+  
+  /* Estilos para el logo */
+  .center {
+    text-align: center;
+  }
+  
+  
+  /* Estilos para el slider y la barra de progreso */
+  .form-range {
+    width: 100%;
+  }
+  
+  .form-range::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    animate: 0.2s;
+    box-shadow: 0px 0px 0px #000000;
+    background: linear-gradient(90deg, #007bff 0%, #007bff 33%, #6c757d 33%, #6c757d 66%, #28a745 66%, #28a745 100%);
+    border-radius: 1.3px;
+    border: 0.2px solid #010101;
+  }
+  
+  .form-range::-webkit-slider-thumb {
+    box-shadow: 0px 0px 0px #000000;
+    border: 1px solid #000000;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+    margin-top: -7px;
+    transition: background 0.15s ease-in-out;
+  }
+  
+  .form-range::-moz-range-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    animate: 0.2s;
+    box-shadow: 0px 0px 0px #000000;
+    background: linear-gradient(90deg, #007bff 0%, #007bff 33%, #6c757d 33%, #6c757d 66%, #28a745 66%, #28a745 100%);
+    border-radius: 1.3px;
+    border: 0.2px solid #010101;
+  }
+  
+  .form-range::-moz-range-thumb {
+    box-shadow: 0px 0px 0px #000000;
+    border: 1px solid #000000;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+    margin-top: -7px;
+    transition: background 0.15s ease-in-out;
+  }
+  

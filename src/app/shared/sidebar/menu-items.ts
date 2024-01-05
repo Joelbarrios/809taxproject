@@ -12,7 +12,15 @@ export const ROUTES: RouteInfo[] = [
   },
   {
     path: '/component/table',
-    title: 'Forms',
+    title: 'Forms English',
+    icon: 'bi bi-layout-split',
+    class: '',
+    extralink: false,
+    submenu: []
+  },
+  {
+    path: '/component/table-es',
+    title: 'Form Spanish',
     icon: 'bi bi-layout-split',
     class: '',
     extralink: false,
@@ -20,12 +28,22 @@ export const ROUTES: RouteInfo[] = [
   },
   {
     path: '/component/archived',
-    title: 'Archived',
+    title: 'Form english Archived',
     icon: 'bi bi-people',
     class: '',
     extralink: false,
     submenu: []
   },
+  {
+    path: '/component/archived-es',
+    title: 'Form Spanish Archived',
+    icon: 'bi bi-people',
+    class: '',
+    extralink: false,
+    submenu: []
+  },
+ 
+  
   {
     path: '/about',
     title: 'About',
@@ -34,12 +52,12 @@ export const ROUTES: RouteInfo[] = [
     extralink: false,
     submenu: []
   },
-  {
-    path: '/users/users',
-    title: 'List of users',
-    icon: 'bi bi-people',
-    class: '',
-    extralink: false,
-    submenu: []
-  }
+  // {
+  //   path: '/users/users',
+  //   title: 'List of users',
+  //   icon: 'bi bi-people',
+  //   class: '',
+  //   extralink: false,
+  //   submenu: []
+  // }
 ];

@@ -5,7 +5,7 @@
         <h4 class="card-title">Project Listing</h4>
         <h5 class="card-subtitle text-muted">Overview of the projects</h5>
         <div class="table-responsive">
-          <input [(ngModel)]="terminoBusqueda" class="form-control" type="search" placeholder="Buscar por nombre, cónyuge o correo">
+          <input [(ngModel)]="terminoBusqueda" class="form-control" type="search" placeholder="Buscar por nombre o correo">
           <table class="table align-middle text-nowrap">
               <thead>
                   <tr>
@@ -42,7 +42,8 @@
                         <h5 class="mb-0 fw-normal">{{form.createAt}}</h5>
                     </td>
                       <td>
-                        <button type="button" class="btn btn-success m-2">Check</button>
+                        <button type="button" class="btn btn-success m-2"
+                        (click)="verDetalle(form.id)">Check</button>
                         <button *ngIf="!form.transferido" (click)="transferirObjeto(form)" 
                         class="btn btn-primary m-2" >Complete</button>
                       </td>

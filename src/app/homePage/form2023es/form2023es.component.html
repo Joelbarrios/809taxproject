@@ -1,1 +1,573 @@
-<p>form2023es works!</p>
+<!-- formulario.component.html -->
+<section id="wrapper" class="">
+    <div>
+      <form class="form-horizontal form-material"
+      id=""
+      autocomplete="off"
+      [formGroup]="formSpanish"
+      (ngSubmit)="createFormEn()">
+  
+  <div class="container" >
+  
+    <div class="row">
+      <div class="col-md-12">
+        <div class="center">
+           <!-- Logo -->
+           <a href="javascript:void(0)">
+            <img src="./../../../assets/images/logos/logoPNG.png" alt="Logo" width="250" height="250"
+            class="img-fluid">
+          </a> 
+        </div>
+      </div>
+      <div class="progress mb-3">
+        <div class="progress-bar" role="progressbar" [style.width.%]="((currentSection - 1) / 2) * 100"></div>
+      </div>
+    </div>
+  
+    <div class="row justify-content-center">
+  
+      <div class="col-md-6">
+  
+        <!-- Sección 1 -->
+        <div  *ngIf="currentSection === 1" formGroupName="section1">
+          <h2>Section 1</h2>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label>Nombre:</label>
+                <input type="text" class="form-control" formControlName="nombre">  
+                <span *ngIf="formSpanish.get('section1.nombre').getError('required')
+                && formSpanish.get('section1.nombre').touched" class="form-text text-danger">
+                nombre is required
+                </span>
+                <span *ngIf="formSpanish.get('section1.nombre').getError('minlength')
+                && formSpanish.get('section1.nombre').touched" class="form-text text-danger">
+                At least 3 characters is required
+                </span>
+  
+  
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label>Nombre del esposo/a:</label>
+                <input type="text" class="form-control" formControlName="nombre_del_esposo">
+                <span *ngIf="formSpanish.get('section1.nombre_del_esposo').getError('required')
+                && formSpanish.get('section1.nombre_del_esposo').touched" class="form-text text-danger">
+                Spouse Name is required
+                </span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label>Número de teléfono:</label>
+                <input type="tel" class="form-control" formControlName="telefono">
+                <span *ngIf="formSpanish.get('section1.telefono').getError('required')
+                && formSpanish.get('section1.telefono').touched" class="form-text text-danger">
+                telefono is required
+                <hr>
+                </span>
+                
+                <span *ngIf="formSpanish.get('section1.telefono').hasError('numeroInvalido')
+                && formSpanish.get('section1.telefono').touched" class="form-text text-danger">
+                  El número debe tener exactamente 10 dígitos.
+                </span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label>Número de teléfono:</label>
+                <input type="tel" class="form-control" formControlName="telefono">
+                <span *ngIf="formSpanish.get('section1.telefono').hasError('numeroInvalido')
+                && formSpanish.get('section1.telefono2').touched" class="form-text text-danger">
+                  El número debe tener exactamente 10 dígitos.
+                </span>
+              </div>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label>Mail</label>
+                <input type="email" class="form-control" formControlName="mail">
+                <span *ngIf="formSpanish.get('section1.mail').getError('required')
+                && formSpanish.get('section1.mail').touched" class="form-text text-danger">
+                Mail is required
+                </span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label>Mail 2</label>
+                <input type="email" class="form-control" formControlName="mail2">
+              </div>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-md-12">
+              <div class="mb-3">
+                <label>Direccion</label>
+                <input type="text" class="form-control" formControlName="direccion">
+                <span *ngIf="formSpanish.get('section1.direccion').getError('required')
+                && formSpanish.get('section1.direccion').touched" class="form-text text-danger">
+                Direccion es requerida
+                </span>
+              </div>
+  
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-md-12">
+              <label class="me-3">estado civil tributario:</label>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-md-12">
+                <!-- Checkboxes con label en una fila -->
+              <div class="mb-3 d-flex align-items-center">
+                <div class="form-check me-3">
+                  <input type="radio" class="form-check-input" formControlName="estado_civil_tributario" value="single">
+                  <label class="form-check-label">Soltero</label>
+                </div>
+                <div class="form-check me-3">
+                  <input type="radio" class="form-check-input" formControlName="estado_civil_tributario"
+                  value="married_filing_joint">
+                  <label class="form-check-label">Casado declarando juntos</label>
+                </div>
+                <div class="form-check me-3">
+                  <input type="radio" class="form-check-input" formControlName="estado_civil_tributario"
+                  value="head_of_househol">
+                  <label class="form-check-label">Cabeza de familia</label>
+                </div>
+              </div>
+  
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-check">
+                <input type="radio" class="form-check-input" formControlName="estado_civil_tributario"
+                value="married_filing_separate">
+                <label class="form-check-label" >Casado declarando separado</label>
+              </div>
+  
+              <span *ngIf="formSpanish.get('section1.estado_civil_tributario').getError('required')
+              && formSpanish.get('section1.estado_civil_tributario').touched" class="form-text text-danger">
+              Filing Status is required
+              </span>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-md-12">
+                <!-- radioes con label en una fila -->
+              <div class="mb-3 d-flex align-items-center">
+                <label class="me-3">¿Está siendo o será reclamado como dependiente en la declaración de otra persona?</label>
+                <div class="form-check me-3">
+                  <input type="radio" class="form-check-input" formControlName="pregunta2"
+                  value="Si">
+                  <label class="form-check-label">Si</label>
+                </div>
+                <div class="form-check">
+                  <input type="radio" class="form-check-input" formControlName="pregunta2"
+                  value="No">
+                  <label class="form-check-label">No</label>
+                </div>
+              </div>
+  
+              <span *ngIf="formSpanish.get('section1.pregunta2').getError('required')
+              && formSpanish.get('section1.pregunta2').touched" class="form-text text-danger">
+              Response is required
+              </span>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-md-8">
+              <div class="mb-3 d-flex align-items-center">
+                <label class="me-3">¿Reclamará a algún dependiente?</label>
+                <div class="form-check me-3">
+                  <input type="radio" class="form-check-input" formControlName="pregunta3"
+                  value="Si">
+                  <label class="form-check-label">Si</label>
+                </div>
+                <div class="form-check">
+                  <input type="radio" class="form-check-input" formControlName="pregunta3"
+                  value="No">
+                  <label class="form-check-label" >No</label>
+                </div>
+            </div>
+            
+          </div>
+  
+          <div class="col-md-4">
+            <div class="mb-3 d-flex align-items-center" >
+              <label>De ser Sí, ¿cuántos?</label>
+              <input type="text" class="form-control" formControlName="extraInfo_pregunta3">
+            </div>
+          </div>
+          <span *ngIf="formSpanish.get('section1.pregunta3').getError('required')
+          && formSpanish.get('section1.pregunta3').touched" class="form-text text-danger">
+          Response is required
+          </span>
+          
+          </div>
+  
+          <div class="row">
+            <div class="col-md-12">
+              <div class="mb-3">
+                <label>Por favor indique nombre completo, SSN, fecha de nacimiento y parentesco para cualquier
+                  dependiente nuevo:</label>
+                <input type="text" class="form-control" formControlName="descripcion">
+                <span *ngIf="formSpanish.get('section1.descripcion').getError('required')
+                && formSpanish.get('section1.descripcion').touched" class="form-text text-danger">
+               Descripcion es requerida
+                </span>
+              </div>
+  
+            </div>
+          </div>
+  
+        </div>
+  
+        <!-- Sección 2 -->
+        <div *ngIf="currentSection === 2" formGroupName="section2">
+          <h2>Section 2</h2>
+       
+          <div class="row">
+            <div class="col-md-12">
+              <div class="mb-3 d-flex align-items-center">
+                <label class="me-3">¿Algún miembro de su familia fiscal tuvo seguro a través de Marketplace/Obamacare? (ej. Oscar,
+                  Florida Blue, Bright Health, Ambetter, Cigna, etc.)?</label>
+                <div class="form-check me-3">
+                  <input type="radio" class="form-check-input" formControlName="pregunta4"
+                  value="Si">
+                  <label class="form-check-label">Si</label>
+                </div>
+                <div class="form-check">
+                  <input type="radio" class="form-check-input" formControlName="pregunta4"
+                  value="No">
+                  <label class="form-check-label">No</label>
+                </div>
+              </div>
+              <span *ngIf="formSpanish.get('section2.pregunta4').getError('required')
+              && formSpanish.get('section2.pregunta4').touched" class="form-text text-danger">
+              Response is required
+              </span>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-md-8">
+              <div class="mb-3 d-flex align-items-center">
+                <label class="me-3">Si aplica, ¿Ha recibido todas las W-2 de todos sus empleadores? </label>
+                <div class="form-check me-3">
+                  <input type="radio" class="form-check-input" formControlName="pregunta5"
+                  value="Si">
+                  <label class="form-check-label">Si</label>
+                </div>
+                <div class="form-check">
+                  <input type="radio" class="form-check-input" formControlName="pregunta5"
+                  value="No">
+                  <label class="form-check-label">No</label>
+                </div>
+            </div>
+          </div>
+  
+          <div class="col-md-4">
+            <div class="mb-3 d-flex align-items-center" >
+              <label>De ser Sí, ¿cuántas?</label>
+              <input type="text" class="form-control" formControlName="extraInfo_pregunta5">
+            </div>
+          </div>
+          <span *ngIf="formSpanish.get('section2.pregunta5').getError('required')
+          && formSpanish.get('section2.pregunta5').touched" class="form-text text-danger">
+          Response is required
+          </span>
+          </div>
+  
+          <div class="row">
+            <div class="col-md-12">
+              <div class="mb-3 d-flex align-items-center">
+                <label class="me-3">¿Recibió usted o su esposo/a beneficios del seguro social o distribuciones de retiros/pensiones
+                  durante el año pasado (ej. 401k, IRA, SSI, etc.)? </label>
+                <div class="form-check me-3">
+                  <input type="radio" class="form-check-input" formControlName="pregunta6"
+                  value="Si">
+                  <label class="form-check-label">Si</label>
+                </div>
+                <div class="form-check">
+                  <input type="radio" class="form-check-input" formControlName="pregunta6"
+                  value="No">
+                  <label class="form-check-label">No</label>
+                </div>
+            </div>
+            <span *ngIf="formSpanish.get('section2.pregunta6').getError('required')
+            && formSpanish.get('section2.pregunta6').touched" class="form-text text-danger">
+            Response is required
+            </span>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-md-12">
+              <div class="mb-3 d-flex align-items-center">
+                <label class="me-3">¿Fue usted o su esposo/a trabajador independiente o dueño de negocio durante el año pasado
+                  (incluyendo cualquier 1099, Uber, Lyft, DoorDash, etc.)?</label>
+                <div class="form-check me-3">
+                  <input type="radio" class="form-check-input" formControlName="pregunta7"
+                  value="Si">
+                  <label class="form-check-label">Si</label>
+                </div>
+                <div class="form-check">
+                  <input type="radio" class="form-check-input" formControlName="pregunta7"
+                  value="No">
+                  <label class="form-check-label">No</label>
+                </div>
+            </div>
+            <span *ngIf="formSpanish.get('section2.pregunta7').getError('required')
+            && formSpanish.get('section2.pregunta7').touched" class="form-text text-danger">
+            Response is required
+            </span>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-md-12">
+              <div class="mb-3 d-flex align-items-center">
+                <label class="me-3">¿Tuvo usted o su esposo/a transacciones de acciones/criptomonedas el año pasado?</label>
+                <div class="form-check me-3">
+                  <input type="radio" class="form-check-input" formControlName="pregunta8"
+                  value="Si">
+                  <label class="form-check-label">Si</label>
+                </div>
+                <div class="form-check">
+                  <input type="radio" class="form-check-input" formControlName="pregunta8"
+                  value="No">
+                  <label class="form-check-label">No</label>
+                </div>
+            </div>
+            <span *ngIf="formSpanish.get('section2.pregunta8').getError('required')
+            && formSpanish.get('section2.pregunta8').touched" class="form-text text-danger">
+            Response is required
+            </span>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-md-12">
+              <div class="mb-3 d-flex align-items-center">
+                <label class="me-3">¿Tuvo usted o su esposo/a algún ingreso por renta de una propiedad el año pasado?</label>
+                <div class="form-check me-3">
+                  <input type="radio" class="form-check-input" formControlName="pregunta9"
+                  value="Si">
+                  <label class="form-check-label">Si</label>
+                </div>
+                <div class="form-check">
+                  <input type="radio" class="form-check-input" formControlName="pregunta9"
+                  value="No">
+                  <label class="form-check-label">No</label>
+                </div>
+            </div>
+            <span *ngIf="formSpanish.get('section2.pregunta9').getError('required')
+            && formSpanish.get('section2.pregunta9').touched" class="form-text text-danger">
+            Response is required
+            </span>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-md-12">
+              <div class="mb-3 d-flex align-items-center">
+                <label class="me-3">¿Tuvo alguien de su familia fiscal algún costo de universidad o préstamo estudiantil? </label>
+                <div class="form-check me-3">
+                  <input type="radio" class="form-check-input" formControlName="pregunta10"
+                  value="Si">
+                  <label class="form-check-label">Si</label>
+                </div>
+                <div class="form-check">
+                  <input type="radio" class="form-check-input" formControlName="pregunta10"
+                  value="No">
+                  <label class="form-check-label">No</label>
+                </div>
+            </div>
+            <span *ngIf="formSpanish.get('section2.pregunta10').getError('required')
+            && formSpanish.get('section2.pregunta10').touched" class="form-text text-danger">
+            Response is required
+            </span>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-md-12">
+              <div class="mb-3 d-flex align-items-center">
+                <label class="me-3">¿Compró o vendió su casa principal el año pasado?  </label>
+                <div class="form-check me-3">
+                  <input type="radio" class="form-check-input"formControlName="pregunta11"
+                  value="Si">
+                  <label class="form-check-label">Si</label>
+                </div>
+                <div class="form-check">
+                  <input type="radio" class="form-check-input" formControlName="pregunta11"
+                  value="No">
+                  <label class="form-check-label">No</label>
+                </div>
+            </div>
+            <span *ngIf="formSpanish.get('section2.pregunta11').getError('required')
+            && formSpanish.get('section2.pregunta11').touched" class="form-text text-danger">
+            Response is required
+            </span>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-md-12">
+              <div class="mb-3 d-flex align-items-center">
+                <label class="me-3">¿Usted o su esposo/a vivieron o trabajaron en un estado diferente a FL el año pasado? </label>
+                <div class="form-check me-3">
+                  <input type="radio" class="form-check-input" formControlName="pregunta12"
+                  value="Si">
+                  <label class="form-check-label">Si</label>
+                </div>
+                <div class="form-check">
+                  <input type="radio" class="form-check-input" formControlName="pregunta12"
+                  value="No">
+                  <label class="form-check-label">No</label>
+                </div>
+            </div>
+            <span *ngIf="formSpanish.get('section2.pregunta12').getError('required')
+            && 
+            formSpanish.get('section2.pregunta12').touched" class="form-text text-danger">
+            Response is required
+            </span>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Sección 3 -->
+        <div *ngIf="currentSection === 3" formGroupName="section3">
+          <h2>Section 3</h2>
+          <div class="row">
+            <div class="col-md-12">
+              <label class="me-3">Por favor seleccione todas las que apliquen para usted o su esposo/a:</label>
+            </div>
+          </div>
+        <div class="row">
+                  <div class="col-md-12">
+                      <!-- Checkboxes con label en una fila -->
+                    <div class="mb-3 d-flex align-items-center">
+                        <div class="mb-3" formGroupName="opciones">
+                          <div *ngFor="let opcion of opciones" class="form-check">
+                            <input class="form-check-input" type="checkbox" [formControlName]="opcion.id" />
+                            <label class="form-check-label">{{ opcion.label }}</label>
+                          </div>
+                        </div>
+                
+                    </div>
+  
+                  </div>
+                </div>
+              
+  
+                <div class="row">
+                  <div class="col-md-12">
+                    <label class="me-3">Por favor proporcione su información bancaria para el depósito o retiro directo:</label>
+                  </div>
+                </div>
+  
+                <div class="row">
+                    <div class="col-md-2">
+                      <br>
+                      <div class="form-check">
+                        <input type="radio" class="form-check-input" formControlName="pregunta13"
+                        value="checking">
+                        <label class="form-check-label">Checking</label>
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <br>
+                      <div class="form-check">
+                        <input type="radio" class="form-check-input" formControlName="pregunta13"
+                        value="savings">
+                        <label class="form-check-label">Savings</label>
+                      </div>
+                    </div>          
+                    <div class="col-md-4">
+                      <div class="mb-3">
+                        <label>Ruta Bancaria:</label>
+                        <input type="text" class="form-control" formControlName="ruta_bancaria">
+                        <span *ngIf="formSpanish.get('section3.ruta_bancaria').getError('required')
+                        && formSpanish.get('section3.ruta_bancaria').touched" class="form-text text-danger">
+                        Response is required
+                        <hr>
+                        </span>
+                        
+                        <span *ngIf="formSpanish.get('section3.ruta_bancaria').hasError('numeroInvalido')
+                        && formSpanish.get('section3.ruta_bancaria').touched" class="form-text text-danger">
+                          El número debe tener exactamente 9 dígitos.
+                        </span>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="mb-3">
+                        <label>Cuenta Bancaria:</label>
+                        <input type="text" class="form-control" formControlName="cuenta_bancaria">
+                        <span *ngIf="formSpanish.get('section3.cuenta_bancaria').getError('required')
+                        && formSpanish.get('section3.cuenta_bancaria').touched" class="form-text text-danger">
+                        Response is required
+                        </span>
+                      </div>
+                    </div>
+                </div>
+  
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="checkbox checkbox-primary p-t-0">
+                      <input type="checkbox" formControlName="terminos">
+                      <span *ngIf="formSpanish.get('section3.terminos').getError('required')
+                      && formSpanish.get('section3.terminos').touched" class="form-text text-danger">
+                      terminos should be accepted
+                      </span>
+                      
+                      <label>I agree to all <a href="#">terminos</a></label>
+  
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="row">
+                  <div class="col text-danger">
+                    <p *ngIf="aceptaTerminos()">terminos should be accepted</p>
+                  </div>
+                </div>
+  
+                <div class="text-center mt-2">
+                   <!-- Botón de enviar formulario -->
+                  <button class="btn btn-success text-align-center" (click)="createFormEn()"
+                  [disabled]="envioEnProgreso">Enviar Formulario</button>
+                </div>
+        </div>
+  
+          <!-- Botones de navegación -->
+          <div class="mb-2 d-flex justify-content-between">
+            <button class="btn btn-secondary" (click)="prevSection()">Anterior</button>
+            <button class="btn btn-primary" (click)="nextSection()">Siguiente</button>
+          </div>
+  
+  
+      </div>
+    </div>
+  </div>
+    
+    </form>
+    </div>
+  </section>
+  
+  

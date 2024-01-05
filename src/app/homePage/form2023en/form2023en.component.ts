@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup,FormBuilder, Validators, FormControl} from '@angular/forms';
+import { FormGroup,FormBuilder, Validators, FormControl, AbstractControl} from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Form2023enService } from './form2023enService';
 import {Router, ActivatedRoute} from '@angular/router';
 import { formatDate } from '@angular/common' ;
+import {ValidationErrors, ValidatorFn } from '@angular/forms';
 
 @Component({
   selector: 'app-form2023en',
@@ -43,8 +44,8 @@ export class Form2023enComponent {
       section1: this.fb.group({
         name:['',[Validators.required,Validators.minLength(3)]],
         spouse_name:['',[Validators.required,Validators.minLength(4)]],
-        phone:['',[Validators.required, , this.validarNumeroFijo()]],
-        phone2:['',[Validators.required, , this.validarNumeroFijo()]],
+        phone:['',[Validators.required]],
+        phone2:['',[Validators.required]],
         mail:['',[Validators.required, Validators.email]],
         mail2:['',[Validators.required, Validators.email]],
         address:['',[Validators.required]],
@@ -70,13 +71,14 @@ export class Form2023enComponent {
       section3:this.fb.group({
         opciones: this.inicializarOpciones(),
         question13:['',[Validators.required]],
-        bank_routing:['',[Validators.required, this.validarNumeroUnico9()]],
+        bank_routing:['',[Validators.required]],
         bank_account:['',[Validators.required]],
         terms:[false, [Validators.requiredTrue]]
       })
     });
   
-    
+    // , this.validarNumeroFijo()
+    // , this.validarNumeroUnico9()
   }
 
   constructor(private fb:FormBuilder,private formService:Form2023enService
@@ -137,6 +139,7 @@ export class Form2023enComponent {
   const datosSeccion1 = this.formEnglish.get('section1').value;
   const datosSeccion2 = this.formEnglish.get('section2').value;
   const datosSeccion3 = this.formEnglish.get('section3').value;
+
   const createAt = new Date();
   this.formEnglish.patchValue({
     createAt: createAt  // Reemplaza 'fecha' con el nombre de tu campo de fecha
@@ -157,7 +160,7 @@ export class Form2023enComponent {
     };
 
 
-    if(this.formEnglish.valid && this.currentSection===3){
+    if(!this.formEnglish.invalid && this.currentSection===3){
 
       this.formSummited=true;
       this.envioEnProgreso = true;
@@ -168,7 +171,7 @@ export class Form2023enComponent {
         this.formService.createForm(datosCompletos)
         .subscribe(resp=>{
   
-          Swal.fire("Thanks for sending de form Mr/Mrs `${datosSeccion1.name}`",'success');
+          Swal.fire("Thanks for sending de form",'success');
 
           this.formEnglish.reset();
         //  this.router.navigateByUrl('/dashboard');
@@ -199,22 +202,26 @@ export class Form2023enComponent {
  }
 
 
-validarNumeroFijo() {
-  return (control) => {
+
+validarNumeroFijo(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
     const value = control.value;
+
+    console.log('Valor del campo:', value);
 
     // Verificar si el valor tiene exactamente 10 dígitos
     if (value && /^\d{10}$/.test(value)) {
+      console.log('Validación pasa');
       return null; // La validación pasa
     } else {
-      control.setErrors({ numeroInvalido: true }); // Asignar error al control
+      console.log('Validación falla');
       return { numeroInvalido: true }; // La validación falla
     }
   };
 }
 
 validarNumeroUnico9() {
-  return (control) => {
+  return (control: AbstractControl): ValidationErrors | null => {
     const value = control.value;
 
     // Verificar si el valor tiene exactamente 9 dígitos

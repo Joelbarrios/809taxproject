@@ -56,6 +56,27 @@ createForm(formEnglish:any):Observable<any>{
 
   }
 
+  
+updateForm(formEnglish:any):Observable<any>{
+
+  return this.http.put<any>(`${this.url}/${formEnglish.id}`,formEnglish,{headers:this.httpHeaders}).pipe(
+    catchError(e=>{
+      console.error(e.error.mensaje);
+
+      if(e.status==400){
+        return throwError(e);
+      }
+
+      Swal.fire("Error al actualizar el form",e.error.mensaje, 'error');
+      return throwError(e);
+
+    })
+  )
+
+}
+
+
+
   getForm(id):Observable<any>{
     return this.http.get<any>(`${this.url}/{id}`).pipe(
       catchError(e=>{
@@ -107,10 +128,16 @@ createForm(formEnglish:any):Observable<any>{
       })
     )
 
-  }
+}
 
- 
-  
-
+obtenerObjetoPorId(id: number): Observable<any> {
+  const url = `${this.url}/${id}`;
+  return this.http.get<any>(url).pipe(
+    catchError((error) => {
+      console.error('Error en la solicitud al backend', error);
+      throw error; // Puedes ajustar el manejo de errores según tus necesidades
+    })
+  );
+}
 
 }

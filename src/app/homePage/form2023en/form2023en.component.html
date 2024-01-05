@@ -83,7 +83,7 @@
               <label>Phone 2:</label>
               <input type="tel" class="form-control" formControlName="phone2">
               <span *ngIf="formEnglish.get('section1.phone2').hasError('numeroInvalido')
-              && formEnglish.get('section1.phone').touched" class="form-text text-danger">
+              && formEnglish.get('section1.phone2').touched" class="form-text text-danger">
                 El número debe tener exactamente 10 dígitos.
               </span>
             </div>
