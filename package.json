@@ -33,13 +33,12 @@
     "ngx-pagination": "^6.0.3",
     "npm-check-updates": "^16.10.12",
     "rxjs": "~7.8.0",
-    "sweetalert2": "^11.10.1",
-    "tslib": "^2.3.0",
+    "sweetalert2": "^11.6.13",
     "zone.js": "~0.13.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.0.1",
-    "@angular/cli": "~16.0.1",
+    "@angular/cli": "^16.2.11",
     "@angular/compiler-cli": "^16.0.0",
     "@types/jasmine": "~4.3.0",
     "angular-cli-ghpages": "^1.0.7",
@@ -49,6 +48,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
+    "tslib": "^2.6.2",
     "typescript": "~5.0.4"
   }
 }

@@ -69,8 +69,8 @@ export class ArchivedEsComponent {
    // Método para filtrar la lista
    filtrarFormData() {
     return this.formData.filter(data =>
-      data.name.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
-      data.spouse_name.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
+      data.nombre.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
+      data.nombre_del_esposo.toLowerCase().includes(this.terminoBusqueda.toLowerCase()) ||
       data.mail.toLowerCase().includes(this.terminoBusqueda.toLowerCase())
     );
   }
