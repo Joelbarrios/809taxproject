@@ -1,4 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
+import { AuthService } from '../auth/auth.service';
 //declare var require: any;
 
 @Component({
@@ -6,7 +7,7 @@ import { Component, AfterViewInit } from '@angular/core';
 })
 export class DashboardComponent implements AfterViewInit {
   subtitle: string;
-  constructor() {
+  constructor(public authService: AuthService) {
     this.subtitle = 'This is some text within a card block.';
   }
 

@@ -52,12 +52,14 @@
         class="rounded-circle"
         width="31"
       />
-      <span class="ms-2">My user</span>
+      <span class="ms-2">root</span>
     </a>
     <div class="dropdown-menu-right" ngbDropdownMenu>
       <!-- <a class="dropdown-item" href="javascript:void(0)"> My Profile</a>
       <div class="dropdown-divider"></div> -->
-      <a class="dropdown-item" href="javascript:void(0)"> Logout</a>
+      <a class="dropdown-item" href="javascript:void(0)"
+     (click)="logout()"> Logout</a>
+   
     </div>
   </li>
   <!-- ============================================================== -->

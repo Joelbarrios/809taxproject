@@ -2,13 +2,25 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { FullComponent } from './layouts/full/full.component';
+import { LoginComponent } from './auth/login/login/login.component';
+import { HomePageComponent } from './homePage/home-page/home-page.component';
 
 export const Approutes: Routes = [
   {
-    path: '',
+    path:'',
+    loadChildren: () => import('./homePage/home-page.module').then(m => m.HomePageModule)
+  },
+  {
+     path: '', redirectTo: '/noFound', pathMatch: 'full' 
+  },
+  {
+    path: 'admin',
     component: FullComponent,
     children: [
-      { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+      {
+      path: '', redirectTo: '/dashboard', pathMatch: 'full' 
+   },
+      
       {
         path: 'dashboard',
         loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
@@ -27,8 +39,8 @@ export const Approutes: Routes = [
     }
     ]
   },{
-    path: 'homepage',
-        loadChildren: () => import('./homePage/home-page.module').then(m => m.HomePageModule)
+    path: 'login',
+  component: LoginComponent
   },
   {
     path: '**',

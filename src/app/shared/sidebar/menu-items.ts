@@ -3,7 +3,7 @@ import { RouteInfo } from './sidebar.metadata';
 export const ROUTES: RouteInfo[] = [
  
   {
-    path: '/dashboard',
+    path: '/admin/dashboard',
     title: 'Dashboard',
     icon: 'bi bi-speedometer2',
     class: '',
@@ -11,7 +11,7 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
-    path: '/component/table',
+    path: '/admin/component/table',
     title: 'Forms English',
     icon: 'bi bi-layout-split',
     class: '',
@@ -19,7 +19,7 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
-    path: '/component/table-es',
+    path: '/admin/component/table-es',
     title: 'Form Spanish',
     icon: 'bi bi-layout-split',
     class: '',
@@ -27,7 +27,7 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
-    path: '/component/archived',
+    path: '/admin/component/archived',
     title: 'Form english Archived',
     icon: 'bi bi-people',
     class: '',
@@ -35,7 +35,7 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
-    path: '/component/archived-es',
+    path: '/admin/component/archived-es',
     title: 'Form Spanish Archived',
     icon: 'bi bi-people',
     class: '',
@@ -45,7 +45,7 @@ export const ROUTES: RouteInfo[] = [
  
   
   {
-    path: '/about',
+    path: '/admin/about',
     title: 'About',
     icon: 'bi bi-people',
     class: '',

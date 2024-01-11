@@ -1,5 +1,7 @@
 import { Component, AfterViewInit, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbDropdownModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AuthService } from 'src/app/auth/auth.service';
 
 declare var $: any;
 
@@ -14,7 +16,22 @@ export class NavigationComponent implements AfterViewInit {
 
   public showSearch = false;
 
-  constructor(private modalService: NgbModal) {
+  constructor(private modalService: NgbModal,
+    private authService: AuthService, private router: Router) {
+  }
+
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
+  }
+
+  getUsername(): string | null {
+    return this.authService.getStoredUsername();
+  }
+
+  logout(): void {
+    this.authService.logout();
+    // Redirige al usuario al componente de inicio de sesión o a la página de inicio
+    this.router.navigate(['/login']);
   }
 
   // This is for Notifications

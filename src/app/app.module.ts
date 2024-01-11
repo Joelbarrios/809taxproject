@@ -24,6 +24,7 @@ import { AppComponent } from './app.component';
 import { SpinnerComponent } from './shared/spinner.component';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { ComponentsModule } from './component/component.module';
+import { LoginComponent } from './auth/login/login/login.component';
 
 
 
@@ -34,7 +35,8 @@ import { ComponentsModule } from './component/component.module';
 @NgModule({
   declarations: [
     AppComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    LoginComponent
 
 
   ],
