@@ -44,14 +44,14 @@ export const ROUTES: RouteInfo[] = [
   },
  
   
-  {
-    path: '/admin/about',
-    title: 'About',
-    icon: 'bi bi-people',
-    class: '',
-    extralink: false,
-    submenu: []
-  },
+  // {
+  //   path: '/admin/about',
+  //   title: 'About',
+  //   icon: 'bi bi-people',
+  //   class: '',
+  //   extralink: false,
+  //   submenu: []
+  // },
   // {
   //   path: '/users/users',
   //   title: 'List of users',
