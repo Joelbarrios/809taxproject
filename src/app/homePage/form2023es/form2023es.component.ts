@@ -155,6 +155,7 @@ this.formSpanish.patchValue({
 
   }else{
     //this.formSpanish.markAllAsTouched();
+    this.Erroralert();
     console.log('error')
 
   }
@@ -225,6 +226,17 @@ if (this.currentSection > 1) {
   this.currentSection--;
 }
 }
+
+
+Erroralert(){
+  Swal.fire({
+    icon: "error",
+    title: "Error",
+    text: "Please complete de form correctly",
+
+  });
+ }
+
 
 
 campoNoValido(campo:string):boolean{

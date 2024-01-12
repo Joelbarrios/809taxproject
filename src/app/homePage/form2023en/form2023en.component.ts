@@ -6,6 +6,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 import { formatDate } from '@angular/common' ;
 import {ValidationErrors, ValidatorFn } from '@angular/forms';
 
+
 @Component({
   selector: 'app-form2023en',
   templateUrl: './form2023en.component.html',
@@ -183,11 +184,14 @@ export class Form2023enComponent {
 
     }else{
       //this.formEnglish.markAllAsTouched();
+      if(this.currentSection === 3 && this.formEnglish.invalid)
+      this.Erroralert();
       console.log('error')
 
     }
 
  }
+
 
  getAllForms(){
 
@@ -200,6 +204,8 @@ export class Form2023enComponent {
   })
 
  }
+
+ 
 
 
 
@@ -246,6 +252,7 @@ validarNumeroUnico9() {
   if (this.currentSection < 3) {
     this.currentSection++;
   }
+
 }
 
 prevSection() {
@@ -268,6 +275,26 @@ campoNoValido(campo:string):boolean{
 aceptaTerminos(){
   return !this.formEnglish.get('terms')?.value && this.formSummited;
 }
+
+showInvalidFormAlert() {
+  Swal.fire({
+    icon: 'error',
+    title: 'Error',
+    text: 'Por favor, completa el formulario correctamente.',
+    confirmButtonText: 'Ok'
+  });
+}
+
+
+ Erroralert(){
+  Swal.fire({
+    icon: "error",
+    title: "Error",
+    text: "Por favor, completa el formulario correctamente",
+
+  });
+ }
+
 
 
 }

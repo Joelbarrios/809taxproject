@@ -528,18 +528,19 @@
               </div>
 
               <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-1">
                   <div class="checkbox checkbox-primary p-t-0">
                     <input type="checkbox" formControlName="terms">
                     <span *ngIf="formEnglish.get('section3.terms').getError('required')
                     && formEnglish.get('section3.terms').touched" class="form-text text-danger">
                     Terms should be accepted
                     </span>
-                    
-                    <label>I agree to all <a href="#">Terms</a></label>
-
                   </div>
                 </div>
+                <div class="col-md-11">
+                  <label>I hereby confirm that I am the authorized individual to complete this form, and I certify that all the information provided is true and accurate</label>
+                </div>
+            
               </div>
 
               <div class="row">
@@ -558,7 +559,7 @@
         <!-- Botones de navegación -->
         <div class="mb-2 d-flex justify-content-between">
           <button class="btn btn-secondary" (click)="prevSection()">Anterior</button>
-          <button class="btn btn-primary" (click)="nextSection()">Siguiente</button>
+          <button class="btn btn-primary" *ngIf="currentSection !== 3" (click)="nextSection()">Siguiente</button>
         </div>
 
 

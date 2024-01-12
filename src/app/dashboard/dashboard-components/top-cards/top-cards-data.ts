@@ -5,14 +5,10 @@ export interface topcard {
     subtitle: string
 }
 
+
 export const topcards: topcard[] = [
 
-    {
-        bgcolor: 'success',
-        icon: 'bi bi-wallet',
-        title: '$21k',
-        subtitle: 'Yearly Earning'
-    },
+
     {
         bgcolor: 'danger',
         icon: 'bi bi-coin',
