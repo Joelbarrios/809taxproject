@@ -1,13 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { URL_BACKEND } from 'src/app/config/config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private url:string='https://herokutest-54f210cf2c75.herokuapp.com/login';
+  private url:string=URL_BACKEND+'/login';
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'});
   private username = 'root';
   private password = 'root123$$$';
