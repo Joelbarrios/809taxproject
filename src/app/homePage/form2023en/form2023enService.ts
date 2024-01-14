@@ -5,14 +5,14 @@ import {map, catchError} from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import {Router} from '@angular/router';
-
+import { URL_BACKEND } from 'src/app/config/config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class Form2023enService {
 
-  private url:string='http://localhost:8080/api/form';
+  private url:string=URL_BACKEND+'/api/form';
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'});
 
 

@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { URL_BACKEND } from 'src/app/config/config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DashboardService {
 
-  private url = 'http://localhost:8080/api/form'; 
+  private url = URL_BACKEND+'/api/form'; 
 
   constructor(private http:HttpClient,
     private router:Router) { }
