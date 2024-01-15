@@ -175,7 +175,7 @@ export class Form2023enComponent {
           Swal.fire("Thanks for sending de form",'success');
 
           this.formEnglish.reset();
-        //  this.router.navigateByUrl('/dashboard');
+        this.router.navigateByUrl('/');
         },(err)=>{
         
           this.errores=err.error.errors as string[];

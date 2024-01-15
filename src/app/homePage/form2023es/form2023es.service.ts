@@ -22,17 +22,6 @@ export class Form2023esService {
 
       return this.http.get<any>(this.url);
     
-      //intentando poner en mayuscula .pipe(
-      //   map(response=>{
-      //     let forms = response as any[];
-    
-      //     return forms.map(form=>{
-      //       form.name = form.name.toUpperCase()
-      //       return form;
-      //     });
-      //   })
-      // )
-      
     }
     
     

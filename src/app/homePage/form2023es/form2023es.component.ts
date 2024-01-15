@@ -146,7 +146,7 @@ this.formSpanish.patchValue({
         Swal.fire("Gracias por enviar el formulario",'success');
 
         this.formSpanish.reset();
-      //  this.router.navigateByUrl('/dashboard');
+        this.router.navigateByUrl('/');
       },(err)=>{
       
         this.errores=err.error.errors as string[];
