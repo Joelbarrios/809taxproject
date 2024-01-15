@@ -235,7 +235,7 @@ Erroralert(){
   Swal.fire({
     icon: "error",
     title: "Error",
-    text: "Please complete de form correctly",
+    text: "Por favor, complete el formulario completamente",
 
   });
  }
