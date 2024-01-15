@@ -280,7 +280,7 @@ showInvalidFormAlert() {
   Swal.fire({
     icon: 'error',
     title: 'Error',
-    text: 'Por favor, completa el formulario correctamente.',
+    text: 'Please complete the form correctly',
     confirmButtonText: 'Ok'
   });
 }

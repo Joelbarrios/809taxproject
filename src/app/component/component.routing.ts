@@ -33,19 +33,7 @@ export const ComponentsRoutes: Routes = [
 			{
 				path: 'archived-es',
 				component: ArchivedEsComponent
-			},
-			{
-				path: 'pagination',
-				component: NgbdpaginationBasicComponent
-			},
-			{
-				path: 'dropdown',
-				component: NgbdDropdownBasicComponent
-			},
-			{
-				path: 'nav',
-				component: NgbdnavBasicComponent
-			},
+			}
 		]
 	}
 ];

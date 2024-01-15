@@ -143,7 +143,7 @@ this.formSpanish.patchValue({
       this.formService.createForm(datosCompletos)
       .subscribe(resp=>{
 
-        Swal.fire("Thanks for sending de form",'success');
+        Swal.fire("Gracias por enviar el formulario",'success');
 
         this.formSpanish.reset();
       //  this.router.navigateByUrl('/dashboard');
@@ -155,8 +155,11 @@ this.formSpanish.patchValue({
 
   }else{
     //this.formSpanish.markAllAsTouched();
-    this.Erroralert();
-    console.log('error')
+     //this.formEnglish.markAllAsTouched();
+     if(this.currentSection === 3 && this.formSpanish.invalid)
+     this.Erroralert();
+     console.log('error');
+
 
   }
 
@@ -251,6 +254,15 @@ if(this.formSpanish.get(campo)?.invalid && this.formSummited ){
 
 aceptaTerminos(){
 return !this.formSpanish.get('terms')?.value && this.formSummited;
+}
+
+showInvalidFormAlert() {
+  Swal.fire({
+    icon: 'error',
+    title: 'Error',
+    text: 'Por favor, completa el formulario correctamente.',
+    confirmButtonText: 'Ok'
+  });
 }
 
 

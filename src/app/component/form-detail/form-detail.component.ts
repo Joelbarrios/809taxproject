@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Form2023enService } from 'src/app/homePage/form2023en/form2023enService';
 import Swal from 'sweetalert2';
+import { URL_BACKEND } from 'src/app/config/config';
 
 @Component({
   selector: 'app-form-detail',
@@ -11,7 +12,7 @@ import Swal from 'sweetalert2';
 export class FormDetailComponent {
 
  public form: any = [];
- url:string='http://localhost:8080/api/form';
+ url:string=URL_BACKEND+'/api/form';
  public nota: string = '';
 
   constructor(private route: ActivatedRoute, private router: Router,
@@ -64,7 +65,7 @@ export class FormDetailComponent {
 
   regresar(): void {
     // Puedes agregar lógica adicional antes de regresar al componente principal
-    this.router.navigate(['/component/table']);
+    this.router.navigate(['admin/component/table']);
   }
   
 

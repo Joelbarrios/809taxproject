@@ -170,7 +170,7 @@ export class TableSpanishComponent {
  }
  
  verDetalle(id: number): void {
-   this.router.navigate(['component/form/', id]);
+   this.router.navigate(['admin/component/form/', id]);
  }
  
  
