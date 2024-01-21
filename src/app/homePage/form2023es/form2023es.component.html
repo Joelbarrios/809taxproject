@@ -64,14 +64,14 @@
             <div class="col-md-6">
               <div class="mb-3">
                 <label>Número de teléfono:</label>
-                <input type="tel" class="form-control" formControlName="telefono">
+                <input type="tel" class="form-control" formControlName="telefono" (blur)="validatePhoneLength()" >
                 <span *ngIf="formSpanish.get('section1.telefono').getError('required')
                 && formSpanish.get('section1.telefono').touched" class="form-text text-danger">
                 El teléfono es requerido
                 <hr>
                 </span>
                 
-                <span *ngIf="formSpanish.get('section1.telefono').hasError('numeroInvalido')
+                <span *ngIf="formSpanish.get('section1.telefono').hasError('minlength')
                 && formSpanish.get('section1.telefono').touched" class="form-text text-danger">
                   El número debe tener exactamente 10 dígitos.
                 </span>
@@ -80,7 +80,7 @@
             <div class="col-md-6">
               <div class="mb-3">
                 <label>Número de teléfono:</label>
-                <input type="tel" class="form-control" formControlName="telefono2">
+                <input type="tel" class="form-control" formControlName="telefono2" (blur)="validatePhone2Length()">
                 <span *ngIf="formSpanish.get('section1.telefono2').hasError('numeroInvalido')
                 && formSpanish.get('section1.telefono2').touched" class="form-text text-danger">
                   El número debe tener exactamente 10 dígitos.
@@ -98,12 +98,17 @@
                 && formSpanish.get('section1.mail').touched" class="form-text text-danger">
                 El mail es requerido
                 </span>
+                <div *ngIf="formSpanish.get('section1.mail').errors?.email"
+              class="form-text text-danger">Por favor, proporcione un email valido: example@email.com</div>
               </div>
             </div>
             <div class="col-md-6">
               <div class="mb-3">
                 <label>Mail 2</label>
                 <input type="email" class="form-control" formControlName="mail2">
+                <div *ngIf="formSpanish.get('section1.mail2').errors?.email"
+                class="form-text text-danger">Por favor, proporcione un email valido: example@email.com</div>
+                
               </div>
             </div>
           </div>
@@ -531,19 +536,17 @@
                   <div class="col-md-1">
                     <div class="checkbox checkbox-primary p-t-0">
                       <input type="checkbox" formControlName="terminos">
-                      <span *ngIf="formSpanish.get('section3.terminos').getError('required')
-                      && formSpanish.get('section3.terminos').touched" class="form-text text-danger">
-                     Los términos deben ser aceptados
-                      </span>
+                   
                     </div>
                   </div>
                       <div class="col-md-11">
                         <label>Confirmo que soy la persona autorizada para completar este formulario, y certifico que toda la información proporcionada es verdadera y precisa.</label>
                       </div>
-                     
-  
-                    
-                 
+                      <span *ngIf="formSpanish.get('section3.terminos').getError('required')
+                      && formSpanish.get('section3.terminos').touched" class="form-text text-danger">
+                     Los términos deben ser aceptados
+                      </span>
+       
                 </div>
   
                 <div class="row">
@@ -560,10 +563,14 @@
         </div>
   
           <!-- Botones de navegación -->
-          <div class="mb-2 d-flex justify-content-between">
+          <!-- <div class="mb-2 d-flex justify-content-between">
             <button class="btn btn-secondary" (click)="prevSection()">Anterior</button>
             <button class="btn btn-primary" *ngIf="currentSection !== 3"  (click)="nextSection()">Siguiente</button>
-          </div>
+          </div> -->
+          <button class="btn btn-primary"
+*ngIf="currentSection !== 3"
+ (click)="nextSection()">Siguiente</button>
+
   
   
       </div>

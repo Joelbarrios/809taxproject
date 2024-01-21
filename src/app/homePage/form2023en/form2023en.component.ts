@@ -23,7 +23,7 @@ export class Form2023enComponent {
   submissionDate: string='';
   public createAt!:Date;
   opciones = [
-    { id: 'identity_protection_pin', label: 'Identity protection_pin' },
+    { id: 'identity_protection_pin', label: 'Identity Protection Pin' },
     { id: 'solar_panels', label: 'Solar Panels' },
     { id: 'unemployment', label: 'Unemployment' },
     { id: 'daycare_dependent_care', label: 'Daycare/dependent care' }
@@ -44,17 +44,17 @@ export class Form2023enComponent {
       createAt:[null],
       section1: this.fb.group({
         name:['',[Validators.required,Validators.minLength(3)]],
-        spouse_name:['',[Validators.required,Validators.minLength(4)]],
-        phone:['',[Validators.required]],
-        phone2:['',[Validators.required]],
+        spouse_name:['',[Validators.minLength(4)]],
+        phone:['',[Validators.required, , Validators.minLength(10), Validators.maxLength(10)]],
+        phone2:['',[Validators.minLength(10), Validators.maxLength(10)]],
         mail:['',[Validators.required, Validators.email]],
-        mail2:['',[Validators.required, Validators.email]],
+        mail2:['',[ Validators.email]],
         address:['',[Validators.required]],
         filing_status:['',[Validators.required]],
         question2:['',[Validators.required]],
         question3:['',[Validators.required]],
         extraData_question3:[''],
-        description:['',[Validators.required]],
+        description:[''],
 
       }),
       section2:this.fb.group({
@@ -71,15 +71,16 @@ export class Form2023enComponent {
       }),
       section3:this.fb.group({
         opciones: this.inicializarOpciones(),
-        question13:['',[Validators.required]],
-        bank_routing:['',[Validators.required]],
-        bank_account:['',[Validators.required]],
+        question13:[''],
+        bank_routing:[''],
+        bank_account:[''],
         terms:[false, [Validators.requiredTrue]]
       })
     });
   
     // , this.validarNumeroFijo()
     // , this.validarNumeroUnico9()
+
   }
 
   constructor(private fb:FormBuilder,private formService:Form2023enService
@@ -94,33 +95,6 @@ export class Form2023enComponent {
     });
     return this.fb.group(formControls);
   }
-
-// isValidField(field:string):boolean | null{
-//   return this.formEnglish.get[field].errors
-//   && this.formEnglish.get[field].touched;
-// }
-
-// getFieldError(field:string):string | null {
-
-//   if(!this.formEnglish.get[field]) return null;
-
-//   const error= this.formEnglish.get[field].hasError || {};
-
-//   for (const key of Object.keys(error)){
-
-//     switch(key){
-//       case 'required':
-//         return ' this camp is required';
-
-//         case 'minlength':
-//           return `At least ${error['minlength'].requiredLength} characters.`
-//     }
-
-//   }
-
-//   return null;
-
-// }
 
 
  //CreateFormEnglish
@@ -205,55 +179,15 @@ export class Form2023enComponent {
 
  }
 
- 
 
 
 
-validarNumeroFijo(): ValidatorFn {
-  return (control: AbstractControl): ValidationErrors | null => {
-    const value = control.value;
+//  nextSection() {
+//   if (this.currentSection < 3) {
+//     this.currentSection++;
+//   }
 
-    console.log('Valor del campo:', value);
-
-    // Verificar si el valor tiene exactamente 10 dígitos
-    if (value && /^\d{10}$/.test(value)) {
-      console.log('Validación pasa');
-      return null; // La validación pasa
-    } else {
-      console.log('Validación falla');
-      return { numeroInvalido: true }; // La validación falla
-    }
-  };
-}
-
-validarNumeroUnico9() {
-  return (control: AbstractControl): ValidationErrors | null => {
-    const value = control.value;
-
-    // Verificar si el valor tiene exactamente 9 dígitos
-    if (value && /^\d{9}$/.test(value)) {
-      // Verificar si todos los dígitos son únicos
-      const digitosUnicos = new Set(value.toString().split(''));
-      if (digitosUnicos.size === 9) {
-        return null; // La validación pasa
-      } else {
-        control.setErrors({ numeroNoUnico: true }); // Asignar error al control
-        return { numeroNoUnico: true }; // La validación falla
-      }
-    } else {
-      control.setErrors({ numeroInvalido: true }); // Asignar error al control
-      return { numeroInvalido: true }; // La validación falla
-    }
-  };
-}
-
-
- nextSection() {
-  if (this.currentSection < 3) {
-    this.currentSection++;
-  }
-
-}
+// }
 
 prevSection() {
   if (this.currentSection > 1) {
@@ -295,6 +229,170 @@ showInvalidFormAlert() {
   });
  }
 
+ get currentSectionName(): string {
+  return `section${this.currentSection}`;
+}
+
+get currentSectionValid(): boolean {
+  const currentSection = this.formEnglish.get(this.currentSectionName);
+  return currentSection.valid && (currentSection.dirty || currentSection.touched);
+}
+
+showAlert(message: string): void {
+  Swal.fire({
+    icon: 'warning',
+    title: 'Advertencia',
+    text: message,
+  });
+}
+
+// nextSection(): void {
+//   this.formEnglish.get(this.currentSectionName).markAllAsTouched();
+
+//     this.currentSection++;
+
+//     console.log(`Avanzando a la sección ${this.currentSectionName}`);
+  
+// }
+
+nextSection(): void {
+  this.formEnglish.get(this.currentSectionName).markAllAsTouched();
+
+  // Validar campos requeridos en la sección actual
+  const currentSection = this.formEnglish.get(this.currentSectionName);
+
+  if (currentSection.invalid) {
+    // Verificar campos individualmente y mostrar alerta si está vacío
+    if (currentSection.get('name').hasError('required')) {
+      this.showAlert('Name is required');
+      return;
+    }
+    // Puedes agregar más verificaciones para otros campos si es necesario
+    if (currentSection.get('phone').hasError('required')) {
+      this.showAlert('Phone is required');
+      return;
+    }
+    if (currentSection.get('mail').hasError('required')) {
+      this.showAlert('Email is required');
+      return;
+    }
+    if (currentSection.get('address').hasError('required')) {
+      this.showAlert('Address is required');
+      return;
+    }
+    if (currentSection.get('filing_status').hasError('required')) {
+      this.showAlert('filing_status is required');
+      return;
+    }
+    if (currentSection.get('question2').hasError('required')) {
+      this.showAlert('question2 is required');
+      return;
+    }
+    if (currentSection.get('question3').hasError('required')) {
+      this.showAlert('question3 is required');
+      return;
+    }
+
+    if (currentSection.get('question4').hasError('required')) {
+      this.showAlert('question4 is required');
+      return;
+    }
+    if (currentSection.get('question4').hasError('required')) {
+      this.showAlert('question4 is required');
+      return;
+    }
+
+    if (currentSection.get('question5').hasError('required')) {
+      this.showAlert('question5 is required');
+      return;
+    }
+
+    if (currentSection.get('question6').hasError('required')) {
+      this.showAlert('question6 is required');
+      return;
+    }
+
+    if (currentSection.get('question7').hasError('required')) {
+      this.showAlert('question7 is required');
+      return;
+    }
+
+    if (currentSection.get('question8').hasError('required')) {
+      this.showAlert('question8 is required');
+      return;
+    }
+    if (currentSection.get('question9').hasError('required')) {
+      this.showAlert('question9 is required');
+      return;
+    }
+    if (currentSection.get('question10').hasError('required')) {
+      this.showAlert('question10 is required');
+      return;
+    }
+    if (currentSection.get('question11').hasError('required')) {
+      this.showAlert('question11 is required');
+      return;
+    }
+    if (currentSection.get('question12').hasError('required')) {
+      this.showAlert('question12 is required');
+      return;
+    }
+    if (currentSection.get('opciones').hasError('required')) {
+      this.showAlert('opciones is required');
+      return;
+    }
+
+
+    // Si no hay alerta específica, mostrar un mensaje genérico
+    this.showAlert('Please complete all the fields');
+    return;
+  }
+
+  // Resto de la lógica para avanzar a la siguiente sección
+  this.currentSection++;
+
+  console.log(`Avanzando a la sección ${this.currentSectionName}`);
+}
+
+validatePhoneLength(): void {
+  const phoneControl = this.formEnglish.get('section1.phone');
+
+  if (phoneControl.invalid && (phoneControl.dirty || phoneControl.touched)) {
+    if (phoneControl.hasError('required')) {
+      this.showAlert('Phone number is required');
+    } else {
+      this.showAlert('At least 10 digits are required');
+    }
+  }
+}
+
+validatePhone2Length(): void {
+  const phone2Control = this.formEnglish.get('section1.phone2');
+
+  if (phone2Control.value && (phone2Control.value.length !== 10)) {
+    this.showAlert('At least 10 digits are required');
+  }
+}
+
+validateBankRoutingLength(): void {
+  const bankRoutingControl = this.formEnglish.get('section3.bank_routing');
+
+  if (bankRoutingControl.value && (bankRoutingControl.value.length !== 9)) {
+    this.showAlert('At least 9 digits are required');
+  }
+}
+
+// nextSection(): void {
+//   this.formEnglish.get(this.currentSectionName).markAllAsTouched();
+
+//   if (this.formEnglish.valid) {
+//     this.currentSection++;
+
+//     console.log(`Avanzando a la sección ${this.currentSectionName}`);
+//   }
+
+
+// }
 
 
 }

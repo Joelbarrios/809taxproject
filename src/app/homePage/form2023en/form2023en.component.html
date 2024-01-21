@@ -35,7 +35,7 @@
         <div class="row">
           <div class="col-md-6">
             <div class="mb-3">
-              <label>Name:</label>
+              <label>Full Name:</label>
               <input type="text" class="form-control" formControlName="name">  
               <span *ngIf="formEnglish.get('section1.name').getError('required')
               && formEnglish.get('section1.name').touched" class="form-text text-danger">
@@ -65,26 +65,26 @@
           <div class="col-md-6">
             <div class="mb-3">
               <label>Phone:</label>
-              <input type="tel" class="form-control" formControlName="phone">
+              <input type="tel" class="form-control" formControlName="phone" (blur)="validatePhoneLength()">
               <span *ngIf="formEnglish.get('section1.phone').getError('required')
               && formEnglish.get('section1.phone').touched" class="form-text text-danger">
               Phone is required
               <hr>
               </span>
               
-              <span *ngIf="formEnglish.get('section1.phone').hasError('numeroInvalido')
+              <span *ngIf="formEnglish.get('section1.phone').hasError('minlength')
               && formEnglish.get('section1.phone').touched" class="form-text text-danger">
-                El número debe tener exactamente 10 dígitos.
+                At least 10 digits are required
               </span>
             </div>
           </div>
           <div class="col-md-6">
             <div class="mb-3">
-              <label>Phone 2:</label>
-              <input type="tel" class="form-control" formControlName="phone2">
-              <span *ngIf="formEnglish.get('section1.phone2').hasError('numeroInvalido')
+              <label>Spouse Phone:</label>
+              <input type="tel" class="form-control" formControlName="phone2" (blur)="validatePhone2Length()" >
+              <span *ngIf="formEnglish.get('section1.phone2').hasError('minlength')
               && formEnglish.get('section1.phone2').touched" class="form-text text-danger">
-                El número debe tener exactamente 10 dígitos.
+              At least 10 digits are require
               </span>
             </div>
           </div>
@@ -93,17 +93,19 @@
         <div class="row">
           <div class="col-md-6">
             <div class="mb-3">
-              <label>Mail</label>
+              <label>Email</label>
               <input type="email" class="form-control" formControlName="mail">
               <span *ngIf="formEnglish.get('section1.mail').getError('required')
               && formEnglish.get('section1.mail').touched" class="form-text text-danger">
               Mail is required
               </span>
+              <div *ngIf="formEnglish.get('section1.mail').errors?.email"
+              class="form-text text-danger">Email must be a valid email address: example@email.com</div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="mb-3">
-              <label>Mail 2</label>
+              <label>Spouse Email</label>
               <input type="email" class="form-control" formControlName="mail2">
             </div>
           </div>
@@ -224,7 +226,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="mb-3">
-              <label>Please detail full name, SSN, DOB, and relationship for any new dependents:</label>
+              <label>Please detail full name, date of birth and relationship for any new dependents:</label>
               <input type="text" class="form-control" formControlName="description">
               <span *ngIf="formEnglish.get('section1.description').getError('required')
               && formEnglish.get('section1.description').touched" class="form-text text-danger">
@@ -478,7 +480,10 @@
 
               <div class="row">
                 <div class="col-md-12">
-                  <label class="me-3"> Please provide bank information for refund direct deposit or payment direct withdrawal:</label>
+                  <p class="me-3">
+                    Please provide bank information for refund direct deposit or payment direct withdrawal
+                    <strong>(You can send the bank information through our WhatsApp or email if you prefer so): </strong>
+                </p>
                 </div>
               </div>
 
@@ -502,15 +507,9 @@
                   <div class="col-md-3">
                     <div class="mb-3">
                       <label>Bank Routing:</label>
-                      <input type="text" class="form-control" formControlName="bank_routing">
-                      <span *ngIf="formEnglish.get('section3.bank_routing').getError('required')
-                      && formEnglish.get('section3.bank_routing').touched" class="form-text text-danger">
-                      Response is required
-                      <hr>
-                      </span>
-                      
-                      <span *ngIf="formEnglish.get('section3.bank_routing').hasError('numeroInvalido')
-                      && formEnglish.get('section3.bank_routing').touched" class="form-text text-danger">
+                      <input type="text" class="form-control" formControlName="bank_routing" (blur)="validateBankRoutingLength()">                 
+                      <span *ngIf="formEnglish.get('section3.bank_routing').hasError('minlength')
+                      && formEnglish.get('section3.bank_routing').hasError('maxlength')" class="form-text text-danger">
                         El número debe tener exactamente 9 dígitos.
                       </span>
                     </div>
@@ -519,10 +518,6 @@
                     <div class="mb-3">
                       <label>Bank Account:</label>
                       <input type="text" class="form-control" formControlName="bank_account">
-                      <span *ngIf="formEnglish.get('section3.bank_account').getError('required')
-                      && formEnglish.get('section3.bank_account').touched" class="form-text text-danger">
-                      Response is required
-                      </span>
                     </div>
                   </div>
               </div>
@@ -531,16 +526,16 @@
                 <div class="col-md-1">
                   <div class="checkbox checkbox-primary p-t-0">
                     <input type="checkbox" formControlName="terms">
-                    <span *ngIf="formEnglish.get('section3.terms').getError('required')
-                    && formEnglish.get('section3.terms').touched" class="form-text text-danger">
-                    Terms should be accepted
-                    </span>
+               
                   </div>
                 </div>
                 <div class="col-md-11">
                   <label>I hereby confirm that I am the authorized individual to complete this form, and I certify that all the information provided is true and accurate</label>
                 </div>
-            
+                <span *ngIf="formEnglish.get('section3.terms').getError('required')
+                && formEnglish.get('section3.terms').touched" class="form-text text-danger">
+                Terms should be accepted
+                </span>
               </div>
 
               <div class="row">
@@ -552,15 +547,22 @@
               <div class="text-center mt-2">
                  <!-- Botón de enviar formulario -->
                 <button class="btn btn-success text-align-center" (click)="createFormEn()"
-                [disabled]="envioEnProgreso">Enviar Formulario</button>
+                [disabled]="envioEnProgreso">Submit</button>
               </div>
       </div>
 
         <!-- Botones de navegación -->
-        <div class="mb-2 d-flex justify-content-between">
-          <button class="btn btn-secondary" (click)="prevSection()">Anterior</button>
-          <button class="btn btn-primary" *ngIf="currentSection !== 3" (click)="nextSection()">Siguiente</button>
-        </div>
+        <!-- <div class="mb-2 d-flex justify-content-between">
+          <button class="btn btn-secondary" (click)="prevSection()">Back</button>
+          <button class="btn btn-primary" *ngIf="currentSection !== 3" (click)="nextSection()">Next</button>
+        </div> -->
+<!-- Botón para avanzar a la Section 2 -->
+<!-- <button class="btn btn-primary" 
+ [disabled]="!isSection1Valid()" (click)="nextSection()">Next</button> -->
+ <!-- Botón para avanzar a la siguiente sección -->
+<button class="btn btn-primary"
+*ngIf="currentSection !== 3"
+ (click)="nextSection()">Next</button>
 
 
     </div>

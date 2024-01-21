@@ -2,7 +2,7 @@ html{
     scroll-behavior: smooth;
 }
 body{
-    line-height: 1.7;
+    line-height: 3;
     font-family: 'Cabin', sans-serif;
     font-size: 1.1rem;
 }
@@ -274,6 +274,7 @@ footer
 
   button{
     background-color: rgb( 206,32,38);
+    font-weight: bold;
   }
   
   .container-mb-3 {
@@ -281,5 +282,10 @@ footer
     justify-content: center;
     align-items: center;
 
+  }
+
+  .custom-btn {
+    height: 200px; /* Ajusta la altura según tus necesidades */
+    font-size: 46px;
   }
   
