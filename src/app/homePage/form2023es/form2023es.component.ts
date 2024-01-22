@@ -42,8 +42,8 @@ ngOnInit(){
     section1: this.fb.group({
       nombre:['',[Validators.required,Validators.minLength(3)]],
       nombre_del_esposo:['',[Validators.minLength(4)]],
-      telefono:['',[Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
-      telefono2:[''],
+      telefono:['',[Validators.required, Validators.minLength(10), Validators.maxLength(11)]],
+      telefono2:['',[Validators.minLength(10), Validators.maxLength(11)]],
       mail:['',[Validators.required, Validators.email]],
       mail2:['',[Validators.email]],
       direccion:['',[Validators.required]],

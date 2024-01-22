@@ -45,8 +45,8 @@ export class Form2023enComponent {
       section1: this.fb.group({
         name:['',[Validators.required,Validators.minLength(3)]],
         spouse_name:['',[Validators.minLength(4)]],
-        phone:['',[Validators.required, , Validators.minLength(10), Validators.maxLength(10)]],
-        phone2:['',[Validators.minLength(10), Validators.maxLength(10)]],
+        phone:['',[Validators.required, , Validators.minLength(10), Validators.maxLength(11)]],
+        phone2:['',[Validators.minLength(10), Validators.maxLength(11)]],
         mail:['',[Validators.required, Validators.email]],
         mail2:['',[ Validators.email]],
         address:['',[Validators.required]],
