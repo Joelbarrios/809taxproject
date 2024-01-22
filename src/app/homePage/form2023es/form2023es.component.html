@@ -34,7 +34,7 @@
           <div class="row">
             <div class="col-md-6">
               <div class="mb-3">
-                <label>Nombre:</label>
+                <label>Nombre completo:</label>
                 <input type="text" class="form-control" formControlName="nombre">  
                 <span *ngIf="formSpanish.get('section1.nombre').getError('required')
                 && formSpanish.get('section1.nombre').touched" class="form-text text-danger">
@@ -92,11 +92,11 @@
           <div class="row">
             <div class="col-md-6">
               <div class="mb-3">
-                <label>Mail</label>
+                <label>Email</label>
                 <input type="email" class="form-control" formControlName="mail">
                 <span *ngIf="formSpanish.get('section1.mail').getError('required')
                 && formSpanish.get('section1.mail').touched" class="form-text text-danger">
-                El mail es requerido
+                El email es requerido
                 </span>
                 <div *ngIf="formSpanish.get('section1.mail').errors?.email"
               class="form-text text-danger">Por favor, proporcione un email valido: example@email.com</div>
@@ -104,7 +104,7 @@
             </div>
             <div class="col-md-6">
               <div class="mb-3">
-                <label>Mail 2</label>
+                <label>Email del esposo/a</label>
                 <input type="email" class="form-control" formControlName="mail2">
                 <div *ngIf="formSpanish.get('section1.mail2').errors?.email"
                 class="form-text text-danger">Por favor, proporcione un email valido: example@email.com</div>
@@ -120,7 +120,7 @@
                 <input type="text" class="form-control" formControlName="direccion">
                 <span *ngIf="formSpanish.get('section1.direccion').getError('required')
                 && formSpanish.get('section1.direccion').touched" class="form-text text-danger">
-                La ireccion es requerida
+                La direccion es requerida
                 </span>
               </div>
   
@@ -129,7 +129,7 @@
   
           <div class="row">
             <div class="col-md-12">
-              <label class="me-3">estado civil tributario:</label>
+              <label class="me-3">Estado Civil Tributario:</label>
             </div>
           </div>
   
@@ -483,7 +483,10 @@
   
                 <div class="row">
                   <div class="col-md-12">
-                    <label class="me-3">Por favor proporcione su información bancaria para el depósito o retiro directo:</label>
+                    <p class="me-3">
+                      Por favor proporcione su información bancaria para el depósito o retiro directo:
+                      <strong>Usted puede enviar la información bancaria a través de nuestro Whatsapp o email si asi lo prefiere</strong>
+                  </p>
                   </div>
                 </div>
   
@@ -543,7 +546,7 @@
                         <label>Confirmo que soy la persona autorizada para completar este formulario, y certifico que toda la información proporcionada es verdadera y precisa.</label>
                       </div>
                       <span *ngIf="formSpanish.get('section3.terminos').getError('required')
-                      && formSpanish.get('section3.terminos').touched" class="form-text text-danger">
+                     " class="form-text text-danger">
                      Los términos deben ser aceptados
                       </span>
        

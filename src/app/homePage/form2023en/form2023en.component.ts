@@ -146,7 +146,7 @@ export class Form2023enComponent {
         this.formService.createForm(datosCompletos)
         .subscribe(resp=>{
   
-          Swal.fire("Thanks for sending de form",'success');
+          Swal.fire("Thanks for sending the form",'success');
 
           this.formEnglish.reset();
         this.router.navigateByUrl('/');
@@ -224,7 +224,7 @@ showInvalidFormAlert() {
   Swal.fire({
     icon: "error",
     title: "Error",
-    text: "Por favor, completa el formulario correctamente",
+    text: "Please, complete the form correctly",
 
   });
  }

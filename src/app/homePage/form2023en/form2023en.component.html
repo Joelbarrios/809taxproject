@@ -526,23 +526,23 @@
                 <div class="col-md-1">
                   <div class="checkbox checkbox-primary p-t-0">
                     <input type="checkbox" formControlName="terms">
-               
+ 
                   </div>
                 </div>
                 <div class="col-md-11">
                   <label>I hereby confirm that I am the authorized individual to complete this form, and I certify that all the information provided is true and accurate</label>
                 </div>
-                <span *ngIf="formEnglish.get('section3.terms').getError('required')
-                && formEnglish.get('section3.terms').touched" class="form-text text-danger">
+                <span *ngIf="formEnglish.get('section3.terms').getError('required')"
+                 class="form-text text-danger">
                 Terms should be accepted
                 </span>
               </div>
 
-              <div class="row">
+              <!-- <div class="row">
                 <div class="col text-danger">
                   <p *ngIf="aceptaTerminos()">Terms should be accepted</p>
                 </div>
-              </div>
+              </div> -->
 
               <div class="text-center mt-2">
                  <!-- Botón de enviar formulario -->
