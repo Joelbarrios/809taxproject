@@ -52,10 +52,7 @@
               <div class="mb-3">
                 <label>Nombre del esposo/a:</label>
                 <input type="text" class="form-control" formControlName="nombre_del_esposo">
-                <span *ngIf="formSpanish.get('section1.nombre_del_esposo').getError('required')
-                && formSpanish.get('section1.nombre_del_esposo').touched" class="form-text text-danger">
-                El nombre del esposo es requerido
-                </span>
+
               </div>
             </div>
           </div>
@@ -511,13 +508,8 @@
                       <div class="mb-3">
                         <label>Ruta Bancaria:</label>
                         <input type="text" class="form-control" formControlName="ruta_bancaria">
-                        <span *ngIf="formSpanish.get('section3.ruta_bancaria').getError('required')
-                        && formSpanish.get('section3.ruta_bancaria').touched" class="form-text text-danger">
-                        La respuesta es requerida
-                        <hr>
-                        </span>
                         
-                        <span *ngIf="formSpanish.get('section3.ruta_bancaria').hasError('numeroInvalido')
+                        <span *ngIf="formSpanish.get('section3.ruta_bancaria').hasError('minlength')
                         && formSpanish.get('section3.ruta_bancaria').touched" class="form-text text-danger">
                           El número debe tener exactamente 9 dígitos.
                         </span>
@@ -527,10 +519,6 @@
                       <div class="mb-3">
                         <label>Cuenta Bancaria:</label>
                         <input type="text" class="form-control" formControlName="cuenta_bancaria">
-                        <span *ngIf="formSpanish.get('section3.cuenta_bancaria').getError('required')
-                        && formSpanish.get('section3.cuenta_bancaria').touched" class="form-text text-danger">
-                        La respuesta es requerida
-                        </span>
                       </div>
                     </div>
                 </div>
@@ -552,11 +540,11 @@
        
                 </div>
   
-                <div class="row">
+                <!-- <div class="row">
                   <div class="col text-danger">
                     <p *ngIf="aceptaTerminos()">terminos should be accepted</p>
                   </div>
-                </div>
+                </div> -->
   
                 <div class="text-center mt-2">
                    <!-- Botón de enviar formulario -->

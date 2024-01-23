@@ -136,7 +136,6 @@ this.formSpanish.patchValue({
 
     this.formSummited=true;
     this.envioEnProgreso = true;
-      
 
    // this.router.navigateByUrl('/dashboard')
    console.log(datosCompletos);
@@ -151,6 +150,12 @@ this.formSpanish.patchValue({
       
         this.errores=err.error.errors as string[];
         console.error(err.error.errors);
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Error. `${this.errores}`",
+      
+        });
       });
 
   }else{
@@ -158,7 +163,6 @@ this.formSpanish.patchValue({
      //this.formEnglish.markAllAsTouched();
      if(this.currentSection === 3 && this.formSpanish.invalid)
      this.Erroralert();
-     console.log('error');
 
 
   }

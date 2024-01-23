@@ -361,7 +361,7 @@ validatePhoneLength(): void {
     if (phoneControl.hasError('required')) {
       this.showAlert('Phone number is required');
     } else {
-      this.showAlert('At least 10 digits are required');
+      this.showAlert('10 digits are required');
     }
   }
 }
@@ -370,7 +370,7 @@ validatePhone2Length(): void {
   const phone2Control = this.formEnglish.get('section1.phone2');
 
   if (phone2Control.value && (phone2Control.value.length !== 10)) {
-    this.showAlert('At least 10 digits are required');
+    this.showAlert('10 digits are required');
   }
 }
 
@@ -378,7 +378,7 @@ validateBankRoutingLength(): void {
   const bankRoutingControl = this.formEnglish.get('section3.bank_routing');
 
   if (bankRoutingControl.value && (bankRoutingControl.value.length !== 9)) {
-    this.showAlert('At least 9 digits are required');
+    this.showAlert('9 digits are required');
   }
 }
 
