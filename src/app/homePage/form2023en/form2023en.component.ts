@@ -380,6 +380,7 @@ validateBankRoutingLength(): void {
   if (bankRoutingControl.value && (bankRoutingControl.value.length !== 9)) {
     this.showAlert('9 digits are required');
   }
+  
 }
 
 // nextSection(): void {
