@@ -3,7 +3,7 @@
     <div>
       <form class="form-horizontal form-material"
       id=""
-      autocomplete="off"
+      autocomplete="on"
       [formGroup]="formSpanish"
       (ngSubmit)="createFormEn()">
   
@@ -34,7 +34,7 @@
           <div class="row">
             <div class="col-md-6">
               <div class="mb-3">
-                <label>Nombre completo:</label>
+                <label>Nombre <strong>completo: </strong></label>
                 <input type="text" class="form-control" formControlName="nombre">  
                 <span *ngIf="formSpanish.get('section1.nombre').getError('required')
                 && formSpanish.get('section1.nombre').touched" class="form-text text-danger">
@@ -76,7 +76,7 @@
             </div>
             <div class="col-md-6">
               <div class="mb-3">
-                <label>Número de teléfono:</label>
+                <label>Número de teléfono del esposo/a:</label>
                 <input type="tel" class="form-control" formControlName="telefono2" (blur)="validatePhone2Length()">
                 <span *ngIf="formSpanish.get('section1.telefono2').hasError('numeroInvalido')
                 && formSpanish.get('section1.telefono2').touched" class="form-text text-danger">
@@ -225,7 +225,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="mb-3">
-                <label>Por favor indique nombre completo, SSN, fecha de nacimiento y parentesco para cualquier
+                <label>Por favor indique nombre completo, fecha de nacimiento y parentesco para cualquier
                   dependiente nuevo:</label>
                 <input type="text" class="form-control" formControlName="descripcion">
                 <span *ngIf="formSpanish.get('section1.descripcion').getError('required')
@@ -555,12 +555,19 @@
   
           <!-- Botones de navegación -->
           <!-- <div class="mb-2 d-flex justify-content-between">
-            <button class="btn btn-secondary" (click)="prevSection()">Anterior</button>
+            
             <button class="btn btn-primary" *ngIf="currentSection !== 3"  (click)="nextSection()">Siguiente</button>
           </div> -->
-          <button class="btn btn-primary"
-*ngIf="currentSection !== 3"
- (click)="nextSection()">Siguiente</button>
+          <div class="d-flex justify-content-between">
+              <button class="btn btn-secondary" (click)="prevSection()">Anterior</button>
+           
+              <button class="btn btn-primary text-right"
+              *ngIf="currentSection !== 3"
+               (click)="nextSection()">Siguiente</button>           
+        
+              </div>
+          
+
 
   
   

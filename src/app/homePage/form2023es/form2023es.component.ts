@@ -369,7 +369,7 @@ validatePhoneLength(): void {
       this.showAlert('El telefono es requerido');
     } 
     else {
-      this.showAlert('Se requiere de al menos 10 digitos');
+      this.showAlert('Se requiere de 10 digitos');
     }
   }
 }
@@ -378,7 +378,7 @@ validatePhone2Length(): void {
   const phone2Control = this.formSpanish.get('section1.telefono2');
 
   if (phone2Control.value && (phone2Control.value.length !== 10)) {
-    this.showAlert('Se requiere de al menos 10 digitos');
+    this.showAlert('Se requiere de 10 digitos');
   }
 }
 
@@ -386,7 +386,7 @@ validateBankRoutingLength(): void {
   const bankRoutingControl = this.formSpanish.get('section3.ruta_bancaria');
 
   if (bankRoutingControl.value && (bankRoutingControl.value.length !== 9)) {
-    this.showAlert('Se requiere de al menos 9 digitos');
+    this.showAlert('Se requiere de 9 digitos');
   }
 }
 
