@@ -14,6 +14,7 @@ export class FormDetailComponent {
  public form: any = [];
  url:string=URL_BACKEND+'/api/form';
  public nota: string = '';
+ public objetoClonado:any=[];
 
   constructor(private route: ActivatedRoute, private router: Router,
     private formService:Form2023enService) {}
@@ -27,6 +28,7 @@ export class FormDetailComponent {
       this.formService.obtenerObjetoPorId(id).subscribe(
         (objeto) => {
           this.form = objeto;
+          this.objetoClonado={ ...this.form };
         },
         (error) => {
           console.error('Error al obtener los detalles del objeto', error);
@@ -39,7 +41,9 @@ export class FormDetailComponent {
   guardarNota(): void {
     if (this.nota.trim() !== '') {
       this.form.nota = this.nota;
-      this.formService.updateForm(this.form).subscribe(
+      const fechaActual = new Date().toISOString().replace('T', ' ').split('.')[0];
+      this.objetoClonado.nota = this.objetoClonado.nota +"\n"+" on" +" " + fechaActual +" " +this.form.nota;
+      this.formService.updateForm(this.objetoClonado).subscribe(
         () => {
           // Mostrar SweetAlert de éxito
           Swal.fire({

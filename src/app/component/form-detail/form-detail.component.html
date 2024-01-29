@@ -1,5 +1,5 @@
 <div class="container mt-5">
-    <h1>Detalle</h1>
+    <h1>Details</h1>
 
     <div class="row">
         <div class="col-md-6">
@@ -18,18 +18,18 @@
             <input type="text" class="form-control" id="phone" readonly value="{{form.phone}}">
         </div>
         <div class="col-md-6">
-            <label for="phone2" class="form-label">Phone2:</label>
+            <label for="phone2" class="form-label">Spouse Phone:</label>
             <input type="text" class="form-control" id="phone2" readonly value="{{form.phone2}}">
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-6">
-            <label for="mail" class="form-label">mail:</label>
+            <label for="mail" class="form-label">Email:</label>
             <input type="text" class="form-control" id="mail" readonly value="{{form.mail}}">
         </div>
         <div class="col-md-6">
-            <label for="mail2" class="form-label">mail2:</label>
+            <label for="mail2" class="form-label">Spouse Email:</label>
             <input type="text" class="form-control" id="mail2" readonly value="{{form.mail2}}">
         </div>
     </div>
@@ -40,7 +40,7 @@
             <input type="text" class="form-control" id="address" readonly value="{{form.address}}">
         </div>
         <div class="col-md-6">
-            <label for="filing_status" class="form-label">filing status:</label>
+            <label for="filing_status" class="form-label">Filing Status:</label>
             <input type="text" class="form-control" id="filing_status" readonly value="{{form.filing_status}}">
         </div>
     </div>
@@ -57,6 +57,12 @@
         <div class="col-md-2">
             <label for="extraData_question3" class="form-label">If yes, How many?:</label>
             <input type="text" class="form-control" id="extraData_question3" readonly value="{{form.extraData_question3}}">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <label for="question3" class="form-label">Please detail full name, date of birth and relationship for any new dependents:</label>
+            <input type="text" class="form-control" id="question3" readonly value="{{form.description}}">
         </div>
     </div>
 
@@ -91,7 +97,7 @@
 
     <div class="row">
         <div class="col-md-6">
-            <label for="question8" class="form-label">Did you or your spouse have stocks/cryptocurrency transactions during the past year?</label>
+            <label for="question8" class="form-label texto-pequeno">Did you or your spouse have stocks/cryptocurrency transactions during the past year?</label>
             <input type="text" class="form-control" id="question8" readonly value="{{form.question8}}">
         </div>
         <div class="col-md-6">
@@ -113,7 +119,15 @@
 
     <div class="row">
         <div class="col-md-6">
-            <label for="question13" class="form-label">Please provide bank information for refund direct deposit or payment direct withdrawal:</label>
+            <label for="question10" class="form-label">Did you or your spouse live or work in a different state from FL over the past year?</label>
+            <input type="text" class="form-control" id="question10" readonly value="{{form.question12}}">
+        </div>
+      
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label for="question13" class="form-label texto-pequeno">Please provide bank information for refund direct deposit or payment direct withdrawal:</label>
             <input type="text" class="form-control" id="question13" readonly value="{{form.question13}}">
         </div>
         <div class="col-md-6">
@@ -123,35 +137,42 @@
     </div>
 
     <div class="row">
+        
+    </div>
+
+    <div class="row">
         <div class="col-md-6">
             <label for="bank_account" class="form-label">Bank Account:</label>
             <input type="text" class="form-control" id="bank_account" readonly value="{{form.bank_account}}">
         </div>
         <div class="col-md-6">
             <label for="identity_protection_pin" class="form-label">Identity protection pin</label>
-            <input type="text" class="form-control" id="identity_protection_pin" readonly value="{{form.identity_protection_pin}}">
+            <input type="text" class="form-control" id="identity_protection_pin" [value]="form.identity_protection_pin === 'identity_protection_pin' ? 'Yes' : 'No'" readonly>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-6">
             <label for="solar_panels" class="form-label">Solar Panels</label>
-            <input type="text" class="form-control" id="solar_panels" readonly value="{{form.solar_panels}}">
+            <input type="text" class="form-control" id="solar_panels" [value]="form.solar_panels === 'solar_panels' ? 'Yes' : 'No'" readonly>
         </div>
         <div class="col-md-6">
             <label for="unemployment" class="form-label">Unemployment</label>
-            <input type="text" class="form-control" id="unemployment" readonly value="{{form.unemployment}}">
+            <input type="text" class="form-control" id="unemployment" [value]="form.unemployment === 'unemployment' ? 'Yes' : 'No'" readonly>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-6">
             <label for="daycare_dependent_care" class="form-label">Daycare dependent care</label>
-            <input type="text" class="form-control" id="daycare_dependent_care" readonly value="{{form.daycare_dependent_care}}">
+            <input type="text" class="form-control" id="daycare_dependent_care" [value]="form.daycare_dependent_care === 'daycare_dependent_care' ? 'Yes' : 'No'" readonly>
         </div>
-        <div class="col-md-6">
-            <label for="nota" class="form-label">nota</label>
-            <input type="text" class="form-control" id="nota" readonly value="{{form.nota}}">
+      
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <label for="nota" class="form-label">Nota</label>
+            <textarea class="form-control" id="nota" rows="3" readonly value="{{form.nota}}"></textarea>
         </div>
     </div>
 
@@ -159,7 +180,10 @@
     <div class="row">
        <!-- Input para la nota -->
        <label for="nota">Nota:</label>
-       <input type="text" id="nota" [(ngModel)]="nota" placeholder="Agrega una nota">
+       
+       <input type="text" id="nota"
+       class="form-control"
+       [(ngModel)]="nota" placeholder="Agrega una nota">
 
        <!-- Botón para guardar la nota -->
        <button class="btn btn-success mt-2" (click)="guardarNota()">Guardar Nota</button>

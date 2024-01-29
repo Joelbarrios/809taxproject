@@ -294,55 +294,6 @@ nextSection(): void {
       this.showAlert('Estado civil tributario es requerido');
       return;
     }
-    if (currentSection.get('pregunta2').hasError('required')) {
-      this.showAlert('La pregunta2 es requerida');
-      return;
-    }
-    if (currentSection.get('pregunta3').hasError('required')) {
-      this.showAlert('La pregunta3 es requerida');
-      return;
-    }
-
-    if (currentSection.get('pregunta4').hasError('required')) {
-      this.showAlert('La pregunta4 es requerida');
-      return;
-    }
-    if (currentSection.get('pregunta5').hasError('required')) {
-      this.showAlert('La pregunta5 es requerida');
-      return;
-    }
-
-    if (currentSection.get('pregunta6').hasError('required')) {
-      this.showAlert('La pregunta6 es requerida');
-      return;
-    }
-
-    if (currentSection.get('pregunta7').hasError('required')) {
-      this.showAlert('La pregunta7 es requerida');
-      return;
-    }
-
-    if (currentSection.get('pregunta8').hasError('required')) {
-      this.showAlert('La pregunta8 es requerida');
-      return;
-    }
-
-    if (currentSection.get('pregunta9').hasError('required')) {
-      this.showAlert('La pregunta9 es requerida');
-      return;
-    }
-    if (currentSection.get('pregunta10').hasError('required')) {
-      this.showAlert('La pregunta10 es requerida');
-      return;
-    }
-    if (currentSection.get('pregunta11').hasError('required')) {
-      this.showAlert('La pregunta11 es requerida');
-      return;
-    }
-    if (currentSection.get('pregunta12').hasError('required')) {
-      this.showAlert('pregunta12 es requerida');
-      return;
-    }
 
     if (currentSection.get('opciones').hasError('required')) {
       this.showAlert('opciones es requerida');
@@ -351,7 +302,7 @@ nextSection(): void {
 
 
     // Si no hay alerta específica, mostrar un mensaje genérico
-    this.showAlert('Please complete all the fields');
+    this.showAlert('Por favor, completa todos los cambios');
     return;
   }
 

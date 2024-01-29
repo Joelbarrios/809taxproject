@@ -284,59 +284,6 @@ nextSection(): void {
       this.showAlert('filing_status is required');
       return;
     }
-    if (currentSection.get('question2').hasError('required')) {
-      this.showAlert('question2 is required');
-      return;
-    }
-    if (currentSection.get('question3').hasError('required')) {
-      this.showAlert('question3 is required');
-      return;
-    }
-
-    if (currentSection.get('question4').hasError('required')) {
-      this.showAlert('question4 is required');
-      return;
-    }
-    if (currentSection.get('question4').hasError('required')) {
-      this.showAlert('question4 is required');
-      return;
-    }
-
-    if (currentSection.get('question5').hasError('required')) {
-      this.showAlert('question5 is required');
-      return;
-    }
-
-    if (currentSection.get('question6').hasError('required')) {
-      this.showAlert('question6 is required');
-      return;
-    }
-
-    if (currentSection.get('question7').hasError('required')) {
-      this.showAlert('question7 is required');
-      return;
-    }
-
-    if (currentSection.get('question8').hasError('required')) {
-      this.showAlert('question8 is required');
-      return;
-    }
-    if (currentSection.get('question9').hasError('required')) {
-      this.showAlert('question9 is required');
-      return;
-    }
-    if (currentSection.get('question10').hasError('required')) {
-      this.showAlert('question10 is required');
-      return;
-    }
-    if (currentSection.get('question11').hasError('required')) {
-      this.showAlert('question11 is required');
-      return;
-    }
-    if (currentSection.get('question12').hasError('required')) {
-      this.showAlert('question12 is required');
-      return;
-    }
     if (currentSection.get('opciones').hasError('required')) {
       this.showAlert('opciones is required');
       return;

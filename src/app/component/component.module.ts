@@ -11,6 +11,7 @@ import { ArchivedFormComponent } from './archived/archived-form/archived-form.co
 import { FormDetailComponent } from './form-detail/form-detail.component';
 import { TableSpanishComponent } from './table-spanish/table-spanish.component';
 import { ArchivedEsComponent } from './archivedEs/archived-es/archived-es.component';
+import { FormDetailEsComponent } from './form-detail-es/form-detail-es/form-detail-es.component';
 
 
 
@@ -34,7 +35,8 @@ import { ArchivedEsComponent } from './archivedEs/archived-es/archived-es.compon
       ArchivedFormComponent,
       FormDetailComponent,
       TableSpanishComponent,
-      ArchivedEsComponent
+      ArchivedEsComponent,
+      FormDetailEsComponent
 
   ]
 

@@ -8,6 +8,7 @@ import { ArchivedFormComponent } from './archived/archived-form/archived-form.co
 import { FormDetailComponent } from './form-detail/form-detail.component';
 import { TableSpanishComponent } from './table-spanish/table-spanish.component';
 import { ArchivedEsComponent } from './archivedEs/archived-es/archived-es.component';
+import { FormDetailEsComponent } from './form-detail-es/form-detail-es/form-detail-es.component';
 
 
 export const ComponentsRoutes: Routes = [
@@ -25,6 +26,10 @@ export const ComponentsRoutes: Routes = [
 			{
 				path: 'form/:id',
 				component: FormDetailComponent
+			},
+			{
+				path: 'form-es/:id',
+				component: FormDetailEsComponent
 			},
 			{
 				path: 'archived',

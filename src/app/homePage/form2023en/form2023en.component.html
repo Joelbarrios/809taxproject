@@ -560,9 +560,14 @@
 <!-- <button class="btn btn-primary" 
  [disabled]="!isSection1Valid()" (click)="nextSection()">Next</button> -->
  <!-- Botón para avanzar a la siguiente sección -->
+
+ <div class="d-flex justify-content-between">
+  <button class="btn btn-secondary" (click)="prevSection()">Back</button>
 <button class="btn btn-primary"
 *ngIf="currentSection !== 3"
  (click)="nextSection()">Next</button>
+
+</div>
 
 
     </div>

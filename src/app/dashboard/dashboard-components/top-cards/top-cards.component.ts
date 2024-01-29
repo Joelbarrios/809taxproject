@@ -9,7 +9,10 @@ import { DashboardService } from '../../dashboard.service';
 })
 export class TopCardsComponent implements OnInit {
   totalRegister: number;
-  totalRegistros: number;
+  totalRegistrosArchivados: number;
+  totalRegistrosNoArchivados: number;
+  totalRegisterArchived:number;
+  totalRegisterNotArchived:number;
   topcards:topcard[];
 
   constructor(private dashboardService:DashboardService) { 
@@ -23,8 +26,25 @@ export class TopCardsComponent implements OnInit {
       error => console.error(error)
     );
 
-    this.dashboardService.getTotalRegistros().subscribe(
-      total => this.totalRegistros = total,
+    //english
+    this.dashboardService.getTotalRegisterArchived().subscribe(
+      total => this.totalRegisterArchived = total,
+      error => console.error(error)
+    );
+
+    this.dashboardService.getTotalRegistrosNoArchivados().subscribe(
+      total => this.totalRegisterNotArchived = total,
+      error => console.error(error)
+    );
+
+    //espanol
+    this.dashboardService.getTotalRegistrosArchivados().subscribe(
+      total => this.totalRegistrosArchivados = total,
+      error => console.error(error)
+    );
+
+    this.dashboardService.getTotalRegistrosNoArchivados().subscribe(
+      total => this.totalRegistrosNoArchivados = total,
       error => console.error(error)
     );
   }

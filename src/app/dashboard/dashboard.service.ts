@@ -22,5 +22,24 @@ export class DashboardService {
       return this.http.get<number>(`${this.url}/totalRegistros`);
     }
 
+    //english
+    getTotalRegisterArchived():Observable<any>{
+      return this.http.get<number>(`${this.url}/contador-uno`);
+    }
+
+    getTotalRegisterNotArchived():Observable<any>{
+      return this.http.get<number>(`${this.url}/contador-cero`);
+    }
+
+
+    // espanol
+    getTotalRegistrosArchivados():Observable<any>{
+      return this.http.get<number>(`${this.url}/contador-uno-espanol`);
+    }
+
+    getTotalRegistrosNoArchivados():Observable<any>{
+      return this.http.get<number>(`${this.url}/contador-cero-espanol`);
+    }
+
     
 }

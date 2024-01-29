@@ -130,6 +130,24 @@ updateForm(formEnglish:any):Observable<any>{
 
 }
 
+transferirYActualizarOriginal(id: number): Observable<any> {
+
+  return this.http.put<any>(`${this.url}/${id}/transferirOriginal`,{headers:this.httpHeaders}).pipe(
+    catchError(e=>{
+      console.error(e.error.mensaje);
+
+      if(e.status==400){
+        return throwError(e);
+      }
+
+      Swal.fire("Error al transferir",e.error.mensaje, 'error');
+      return throwError(e);
+
+    })
+  )
+
+}
+
 obtenerObjetoPorId(id: number): Observable<any> {
   const url = `${this.url}/${id}`;
   return this.http.get<any>(url).pipe(

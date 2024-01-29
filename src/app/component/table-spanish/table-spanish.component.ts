@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgFor } from '@angular/common';
+import { NgFor, formatDate } from '@angular/common';
 import {
   NgbDropdownModule,
   NgbModule,
@@ -81,6 +81,7 @@ export class TableSpanishComponent {
        this.formService.getForms().subscribe(
          (response) => {
            this.formData = response;
+           this.formatearFechas();
         
            console.log(response);
          },
@@ -170,8 +171,16 @@ export class TableSpanishComponent {
  }
  
  verDetalle(id: number): void {
-   this.router.navigate(['admin/component/form/', id]);
+   this.router.navigate(['admin/component/form-es/', id]);
  }
+
+ formatearFechas() {
+  this.formData.forEach(registro => {
+    const createAtValor = registro.createAt;
+    const fecha = new Date(createAtValor);
+    registro.createAtFormateado = formatDate(fecha, 'dd/MM/yyyy HH:mm:ss', 'en-US');
+  });
+}
  
  
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgFor } from '@angular/common';
+import { NgFor, formatDate } from '@angular/common';
 import {
   NgbDropdownModule,
   NgbModule,
@@ -79,7 +79,7 @@ export class ArchivedFormComponent {
         this.formService.getForms().subscribe(
           (response) => {
             this.formData = response;
-         
+            this.formatearFechas();
             console.log(response);
           },
           (error) => {
@@ -101,6 +101,14 @@ export class ArchivedFormComponent {
     
       toggleDisabled() {
         this.isDisabled = !this.isDisabled;
+      }
+
+      formatearFechas() {
+        this.formData.forEach(registro => {
+          const createAtValor = registro.createAt;
+          const fecha = new Date(createAtValor);
+          registro.createAtFormateado = formatDate(fecha, 'dd/MM/yyyy HH:mm:ss', 'en-US');
+        });
       }
     
       //   custom links
@@ -156,6 +164,30 @@ export class ArchivedFormComponent {
       }
     );
   }
+
+  realizarTransferenciaOriginal(objeto: any) {
+    this.formService.transferirYActualizarOriginal(objeto.id).subscribe(
+      response => {
+        if (response && response.mensaje) {
+          // Mostrar SweetAlert de mensaje exitoso
+          Swal.fire({
+            icon: 'success',
+            title: 'Éxito',
+            text: response.mensaje
+          }).then(() => {
+            // Recargar la página después de cerrar el alert
+            location.reload();
+          });
+        }
+      },
+      error => {
+        // Manejar el error aquí
+        console.error('Error en la transferencia y marcado:', error);
+      }
+    );
+  }
+
+  
   
   private actualizarCampoTransferido(objeto: any) {
     // Encuentra el índice del objeto en la tabla original

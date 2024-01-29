@@ -39,12 +39,12 @@
                          2018
                         </td>
                         <td>
-                          <h5 class="mb-0 fw-normal">{{form.createAt}}</h5>
+                          <h5 class="mb-0 fw-normal">{{form.createAtFormateado}}</h5>
                       </td>
                         <td>
                           <button type="button" class="btn btn-success m-2">Check</button>
-                          <button *ngIf="!form.transferido" (click)="transferirObjeto(form)" 
-                          class="btn btn-primary m-2" >Complete</button>
+                          <button *ngIf="form.transferido" (click)="realizarTransferenciaOriginal(form)" 
+                          class="btn btn-primary m-2" >Not Complete</button>
                         </td>
                       </ng-container>
                     </tr>   

@@ -1,5 +1,5 @@
-import { Component, OnInit  } from '@angular/core';
-import { NgFor } from '@angular/common';
+import { Component, OnInit, VERSION } from '@angular/core';
+import { NgFor, formatDate } from '@angular/common';
 import {
   NgbDropdownModule,
   NgbModule,
@@ -23,6 +23,8 @@ const FILTER_PAG_REGEX = /[^0-9]/g;
   templateUrl: 'table.component.html'
 })
 export class TableComponent {
+
+  version = VERSION.full;
   
   formData: any = [];
   now:any;
@@ -32,6 +34,32 @@ export class TableComponent {
   tableSizes: any = [3, 6, 9, 12];
   filteredData: any[] = [];
   registerFalse:any[]=[];
+
+  formatsDateTest: string[] = [
+    'dd/MM/yyyy',
+    'dd/MM/yyyy hh:mm:ss',
+    'dd-MM-yyyy',
+    'dd-MM-yyyy HH:mm:ss',
+    'MM/dd/yyyy',
+    'MM/dd/yyyy hh:mm:ss',
+    'yyyy/MM/dd',
+    'yyyy/MM/dd HH:mm:ss',
+    'dd/MM/yy',
+    'dd/MM/yy hh:mm:ss',
+    'hh:mm:ss',
+    'short',
+    'medium',
+    'long',
+    'full',
+    'shortDate',
+    'mediumDate',
+    'longDate',
+    'fullDate',
+    'shortTime',
+    'mediumTime',
+    'longTime',
+    'fullTime',
+  ];
 
     // Variable para almacenar el término de búsqueda
     terminoBusqueda: string = '';
@@ -83,6 +111,7 @@ export class TableComponent {
       this.formService.getForms().subscribe(
         (response) => {
           this.formData = response;
+          this.formatearFechas();
        
           console.log(response);
         },
@@ -90,6 +119,14 @@ export class TableComponent {
           console.log(error);
         }
       );
+    }
+
+    formatearFechas() {
+      this.formData.forEach(registro => {
+        const createAtValor = registro.createAt;
+        const fecha = new Date(createAtValor);
+        registro.createAtFormateado = formatDate(fecha, 'dd/MM/yyyy HH:mm:ss', 'en-US');
+      });
     }
    
     onTableDataChange(event: any) {
@@ -141,6 +178,28 @@ export class TableComponent {
 
 realizarTransferencia(objeto: any) {
   this.formService.transferirYActualizar(objeto.id).subscribe(
+    response => {
+      if (response && response.mensaje) {
+        // Mostrar SweetAlert de mensaje exitoso
+        Swal.fire({
+          icon: 'success',
+          title: 'Éxito',
+          text: response.mensaje
+        }).then(() => {
+          // Recargar la página después de cerrar el alert
+          location.reload();
+        });
+      }
+    },
+    error => {
+      // Manejar el error aquí
+      console.error('Error en la transferencia y marcado:', error);
+    }
+  );
+}
+
+realizarTransferenciaOriginal(objeto: any) {
+  this.formService.transferirYActualizarOriginal(objeto.id).subscribe(
     response => {
       if (response && response.mensaje) {
         // Mostrar SweetAlert de mensaje exitoso
