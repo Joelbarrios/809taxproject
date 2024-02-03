@@ -1,3 +1,5 @@
+<div class="container-fluid vh-100 vw-100">
+
 <div *ngIf="authService.isLoggedIn()">
 
 <app-top-cards></app-top-cards>
@@ -39,4 +41,6 @@
 
 <div *ngIf="!authService.isLoggedIn()">
   <p>Error. Página confidencial</p>
+</div>
+
 </div>
